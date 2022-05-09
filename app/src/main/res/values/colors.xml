@@ -7,4 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    //Background
+    <color name="background">#F5FEFD</color>
+
+    //Button
+    <color name="purple_btn">#A3A1FF</color>
+    <color name="green_btn">#14FF00</color>
+    
+    //Bubble
+    <color name="light_cyan">#D4FFFA</color>
+    <color name="cyan">#00FFE3</color>
+    
 </resources>
