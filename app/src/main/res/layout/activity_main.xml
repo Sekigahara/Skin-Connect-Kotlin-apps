@@ -4,15 +4,150 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:hint="@string/date"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/guideline3"
+        app:layout_constraintEnd_toStartOf="@id/fab_doctors_fav"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_doctors_fav"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/content_desc"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_bookmarks_24" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="139dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/circle"
+        android:contentDescription="@string/content_desc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline3" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="@string/daily_goal"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/btn_discover"
+        android:layout_width="166dp"
+        android:layout_height="51dp"
+        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/placeholder"
+        android:backgroundTint="@color/purple_btn"
+        android:text="@string/discover"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.189" />
+
+    <Button
+        android:id="@+id/btn_doctors"
+        android:layout_width="166dp"
+        android:layout_height="51dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/placeholder"
+        android:backgroundTint="@color/purple_btn"
+        android:text="@string/doctors"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.189" />
+
+
+    <ImageButton
+        android:id="@+id/btn_schedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/schedule"
+        android:src="@drawable/button_schedule"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/nav_placholder"
+        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        app:layout_constraintVertical_bias="0.802" />
+
+    <ImageButton
+        android:id="@+id/btn_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/schedule"
+        android:src="@drawable/button_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_profile"
+        app:layout_constraintStart_toEndOf="@+id/btn_schedule"
+        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        app:layout_constraintVertical_bias="0.802" />
+
+    <ImageButton
+        android:id="@+id/btn_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/schedule"
+        android:src="@drawable/button_profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/nav_placholder"
+        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        app:layout_constraintVertical_bias="0.802" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="535dp" />
+
+    <ImageView
+        android:id="@+id/nav_placholder"
+        android:layout_width="318dp"
+        android:layout_height="74dp"
+        android:background="@drawable/nav_placeholder"
+        android:contentDescription="@string/content_desc"
+        android:elevation="@dimen/cardview_default_elevation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_doctors"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="@+id/btn_discover"
+        app:layout_constraintTop_toBottomOf="@id/guideline4"
+        app:layout_constraintVertical_bias="0.327" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
