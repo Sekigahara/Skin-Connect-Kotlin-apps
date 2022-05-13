@@ -42,25 +42,12 @@
         app:layout_constraintStart_toEndOf="@id/rect_green"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/skip"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toEndOf="@id/rect_green2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.431" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="122dp" />
+        app:layout_constraintGuide_begin="123dp" />
 
     <TextView
         android:id="@+id/tv_title"
@@ -177,7 +164,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_next"
+        android:id="@+id/btn_create"
         android:layout_width="266dp"
         android:layout_height="51dp"
         android:layout_marginTop="32dp"

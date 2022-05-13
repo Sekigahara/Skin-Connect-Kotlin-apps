@@ -10,6 +10,10 @@
     <string name="how_are">How are you feeling today?</string>
     <string name="your_doctors">Your doctors</string>
 
+    //OnBoarding
+    <string name="register_here">Don’t  have an account?  Sign Up</string>
+    <string name="login_here">Already  have an account?  Log In</string>
+
     //Description
     <string name="doctors_desc">Find the perfect doctors\n that fits your need</string>
     <string name="clinic_desc">Find the best clinics\n around you</string>
@@ -52,4 +56,5 @@
     <string name="input_error_email">Invalid Email Entered</string>
     <string name="input_error_password">Invalid Password Entered</string>
     <string name="date">Sunday</string>
+    <string name="log_into">Log into your account</string>
 </resources>
