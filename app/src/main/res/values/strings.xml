@@ -4,6 +4,7 @@
     //Title Page
     <string name="tell_me">Tell me more about yourself</string>
     <string name="create_account">Create your Account</string>
+    <string name="log_into">Log into your account</string>
     <string name="what_are">What are you looking for?</string>
     <string name="find_doctor">Find your doctor</string>
     <string name="find_clinic">Find Clinic</string>
@@ -56,5 +57,4 @@
     <string name="input_error_email">Invalid Email Entered</string>
     <string name="input_error_password">Invalid Password Entered</string>
     <string name="date">Sunday</string>
-    <string name="log_into">Log into your account</string>
 </resources>
