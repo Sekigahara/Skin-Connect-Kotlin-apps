@@ -27,9 +27,18 @@ class AuthRepositoryTest {
 
     @Test
     fun `when login Should Not Null`() = runBlockingTest {
-        val expectedResponse = DataDummy.generateDummyBaseResponse()
-        val request = LoginRequest("payjoo23@gmail.com", "payjoo456)(*&")
+        val expectedResponse = DataDummy.generateDummyLoginResponse()
+        val request = DataDummy.generateDummyLoginRequest()
         val actualResponse = service.login(request)
+        Assert.assertNotNull(actualResponse)
+        Assert.assertEquals(expectedResponse, actualResponse)
+    }
+
+    @Test
+    fun `when register Should Not Null`() = runBlockingTest {
+        val expectedResponse = DataDummy.generateDummyRegisterResponse()
+        val request = DataDummy.generateDummyRegisterRequest()
+        val actualResponse = service.register(request)
         Assert.assertNotNull(actualResponse)
         Assert.assertEquals(expectedResponse, actualResponse)
     }

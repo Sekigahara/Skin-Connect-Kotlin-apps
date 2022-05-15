@@ -6,37 +6,34 @@ import com.skinconnect.userapps.util.DataDummy
 import com.skinconnect.userapps.util.getOrAwaitValue
 import org.junit.Assert
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.mockito.Mockito
-import org.mockito.Mockito.`when`
-import org.mockito.junit.MockitoJUnitRunner
 
-class LoginViewModelTest : AuthViewModelTest() {
-    private val dummyRequest = DataDummy.generateDummyLoginRequest()
+class RegisterViewModelTest : AuthViewModelTest() {
+    private var dummyRequest = DataDummy.generateDummyRegisterRequest()
 
     override fun setUp() {
-        viewModel = LoginViewModel(repository)
+        viewModel = RegisterViewModel(repository)
     }
 
     override fun `when Network Error Should Return Error`() {
-        val viewModel = viewModel as LoginViewModel
+        val viewModel = viewModel as RegisterViewModel
         val expectedMessage = MutableLiveData<Result<String>>()
         expectedMessage.value = Result.Error("Error")
-        `when`(viewModel.login(dummyRequest)).thenReturn(expectedMessage)
-        val actualMessage = viewModel.login(dummyRequest).getOrAwaitValue()
-        Mockito.verify(repository).login(dummyRequest)
+        Mockito.`when`(viewModel.register(dummyRequest)).thenReturn(expectedMessage)
+        val actualMessage = viewModel.register(dummyRequest).getOrAwaitValue()
+        Mockito.verify(repository).register(dummyRequest)
         Assert.assertNotNull(actualMessage)
         Assert.assertTrue(actualMessage is Result.Error)
     }
 
     @Test
-    fun `when Login Should Not Null and Return Success`() {
-        val viewModel = viewModel as LoginViewModel
+    fun `when register Should Not Null And Return Success`() {
+        val viewModel = viewModel as RegisterViewModel
         val expectedMessage = MutableLiveData<Result<String>>()
         expectedMessage.value = Result.Success(dummyMessage)
-        `when`(viewModel.login(dummyRequest)).thenReturn(expectedMessage)
-        val actualMessage = viewModel.login(dummyRequest).getOrAwaitValue()
-        Mockito.verify(repository).login(dummyRequest)
+        Mockito.`when`(viewModel.register(dummyRequest)).thenReturn(expectedMessage)
+        val actualMessage = viewModel.register(dummyRequest).getOrAwaitValue()
+        Mockito.verify(repository).register(dummyRequest)
         Assert.assertNotNull(actualMessage)
         Assert.assertTrue(actualMessage is Result.Success)
         Assert.assertEquals(dummyMessage, (actualMessage as Result.Success).data)
