@@ -2,9 +2,7 @@ package com.skinconnect.userapps.ui
 
 import android.annotation.SuppressLint
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Surface
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
@@ -22,14 +20,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            window.statusBarColor=MaterialTheme.colors.background.toArgb()
-            window.navigationBarColor=MaterialTheme.colors.background.toArgb()
+            window.statusBarColor = MaterialTheme.colors.background.toArgb()
+            window.navigationBarColor = MaterialTheme.colors.background.toArgb()
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                window.navigationBarDividerColor=MaterialTheme.colors.onBackground.copy(alpha = 0.1f).toArgb()
+                window.navigationBarDividerColor =
+                    MaterialTheme.colors.onBackground.copy(alpha = 0.1f).toArgb()
             }
 
-            val currentScreen= mutableStateOf<Screen>(Screen.Home)
+            val currentScreen = mutableStateOf<Screen>(Screen.Home)
 
             CustomBottomNavigationTheme {
                 // A surface container using the 'background' color from the theme
@@ -38,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     Scaffold(
                         bottomBar = {
                             CustomBottomNavigation(currentScreenId = currentScreen.value.id) {
-                                currentScreen.value=it
+                                currentScreen.value = it
                             }
                         }
                     ) {

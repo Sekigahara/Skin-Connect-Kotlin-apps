@@ -3,27 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/button_home.xml" value="0.1625" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/button_profile.xml" value="0.1625" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/button_ronded.xml" value="0.1625" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/button_rounded.xml" value="0.1625" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/circle.xml" value="0.1625" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1625" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/ic_baseline_bookmarks_24.xml" value="0.1625" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1625" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.1625" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/ic_baseline_rectangle_24.xml" value="0.1625" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/ic_baseline_rectangle_gray.xml" value="0.1625" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/ic_baseline_schedule_24.xml" value="0.1625" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/ic_profile_normal.xml" value="0.1625" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/nav_placeholder.xml" value="0.1625" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/placeholder.xml" value="0.1625" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/schedule_button.xml" value="0.1625" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/layout-v28/activity_main.xml" value="0.26856884057971014" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/layout/activity_login.xml" value="0.264" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/layout/activity_main.xml" value="0.176" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/layout/activity_signup.xml" value="0.2" />
-        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/layout/activity_signup2.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.245018115942029" />
       </map>
     </option>
   </component>
