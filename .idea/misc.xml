@@ -3,7 +3,28 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bg_splash.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/button_home.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/circle.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/ic_age.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/ic_baseline_rectangle_gray.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/ic_baseline_rectangle_green.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/ic_baseline_weight.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/ic_home_normal.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/ic_home_pressed.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/ic_profile_normal.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/ic_profile_pressed.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/ic_schedule_normal.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/ic_schedule_pressed.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/ic_splash_logo.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/nav_placeholder.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/placeholder.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/splash_background.xml" value="0.1775" />
+        <entry key="app/src/main/res/layout/activity_base.xml" value="0.20572916666666666" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.20572916666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.245018115942029" />
+        <entry key="app/src/main/res/layout/activity_signup.xml" value="0.2653985507246377" />
       </map>
     </option>
   </component>
