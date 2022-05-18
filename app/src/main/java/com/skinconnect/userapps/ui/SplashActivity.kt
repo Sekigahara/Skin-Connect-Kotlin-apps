@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
+import com.skinconnect.userapps.ui.helper.BaseActivity
 import com.skinconnect.userapps.ui.helper.BaseView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -26,7 +27,7 @@ class SplashActivity : AppCompatActivity(), BaseView {
              delay(1000)
 
             withContext(Dispatchers.Main) {
-                val intent = Intent(this@SplashActivity, MainActivity::class.java)
+                val intent = Intent(this@SplashActivity, BaseActivity::class.java)
                 startActivity(intent)
                 finish()
             }
