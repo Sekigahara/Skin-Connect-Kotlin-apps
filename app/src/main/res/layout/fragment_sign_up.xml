@@ -11,6 +11,7 @@
         android:layout_marginBottom="12dp"
         android:contentDescription="@string/content_desc"
         android:src="@drawable/ic_baseline_arrow_back_24"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/guideline2"
         app:layout_constraintEnd_toStartOf="@id/rect_green"
         app:layout_constraintStart_toStartOf="parent"
