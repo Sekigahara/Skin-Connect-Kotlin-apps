@@ -29,7 +29,7 @@
     <string name="skip">Skip</string>
     <string name="age">Your Age</string>
     <string name="gender">Your Gender</string>
-    <string name="weight">Your Weight</string>
+    <string name="weight">Your Weight (Kg)</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -57,4 +57,8 @@
     <string name="input_error_email">Invalid Email Entered</string>
     <string name="input_error_password">Invalid Password Entered</string>
     <string name="date">Sunday</string>
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 </resources>

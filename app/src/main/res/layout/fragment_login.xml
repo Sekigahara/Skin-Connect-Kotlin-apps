@@ -46,8 +46,7 @@
         <com.skinconnect.userapps.customview.EmailEditText
             android:id="@+id/cv_email"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="text" />
+            android:layout_height="match_parent" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
