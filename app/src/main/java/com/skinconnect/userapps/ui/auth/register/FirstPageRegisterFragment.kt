@@ -9,6 +9,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.skinconnect.userapps.R
 import com.skinconnect.userapps.customview.EditText
+import com.skinconnect.userapps.data.remote.request.RegisterDetailsRequest
 import com.skinconnect.userapps.databinding.FragmentSignUpBinding
 import com.skinconnect.userapps.ui.helper.BaseFragment
 import com.skinconnect.userapps.ui.helper.FormValidator
@@ -33,14 +34,8 @@ class FirstPageRegisterFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupViewModel()
         setupView()
         setupAction()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        viewBinding = null
     }
 
     override fun setupView() {
@@ -57,8 +52,6 @@ class FirstPageRegisterFragment : BaseFragment() {
         setNextPageButtonEnable()
     }
 
-    override fun setupViewModel() {}
-
     override fun setupAction() {
         val navigationToLogin =
             Navigation.createNavigateOnClickListener(R.id.action_fragmentRegisterFirstPage_to_loginFragment)
@@ -72,8 +65,17 @@ class FirstPageRegisterFragment : BaseFragment() {
         genderAutoCompleteTextView.addTextChangedListener(textWatcher)
 
         nextButton.setOnClickListener { view ->
-            view.findNavController()
-                .navigate(R.id.action_fragmentRegisterFirstPage_to_fragmentRegisterSecondPage)
+            val age = "${ageEditText.text}"
+            val gender = "${genderAutoCompleteTextView.text}"
+            val weight = "${weightEditText.text}"
+            val request = RegisterDetailsRequest(gender, age, weight)
+
+            val toSecondRegisterOPageFragment =
+                FirstPageRegisterFragmentDirections.actionFragmentRegisterFirstPageToFragmentRegisterSecondPage(
+                    request,
+                )
+
+            view.findNavController().navigate(toSecondRegisterOPageFragment)
         }
     }
 
@@ -86,4 +88,6 @@ class FirstPageRegisterFragment : BaseFragment() {
             FormValidator.validateAge("$age") && FormValidator.validateWeight(
                 "$weight") && FormValidator.validateGender("$gender")
     }
+
+    override fun setupViewModel() {}
 }
