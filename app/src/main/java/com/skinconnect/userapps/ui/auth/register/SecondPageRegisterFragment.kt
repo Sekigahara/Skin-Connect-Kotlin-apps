@@ -41,7 +41,9 @@ class SecondPageRegisterFragment : BaseFragment() {
         val binding = binding as FragmentSignUp2Binding
         val navigationToPreviousRegisterPage =
             Navigation.createNavigateOnClickListener(R.id.action_fragmentRegisterSecondPage_to_fragmentRegisterFirstPage)
+        val navigationToLogin = Navigation.createNavigateOnClickListener(R.id.action_fragmentRegisterSecondPage_to_loginFragment2)
 
         binding.buttonBackSecondRegisterPage.setOnClickListener(navigationToPreviousRegisterPage)
+        binding.btnCreate.setOnClickListener(navigationToLogin)
     }
 }

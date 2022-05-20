@@ -57,4 +57,7 @@
     <string name="input_error_email">Invalid Email Entered</string>
     <string name="input_error_password">Invalid Password Entered</string>
     <string name="date">Sunday</string>
+    <string name="checkup">Check Up</string>
+    <string name="login">Login</string>
+    <string name="sign_in">Sign In</string>
 </resources>

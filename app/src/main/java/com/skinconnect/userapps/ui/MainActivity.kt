@@ -1,53 +1,25 @@
 package com.skinconnect.userapps.ui
 
-import android.annotation.SuppressLint
-import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.graphics.toArgb
-import com.skinconnect.userapps.customview.CustomBottomNavigation
-import com.skinconnect.userapps.customview.Screen
-import com.skinconnect.userapps.ui.theme.CustomBottomNavigationTheme
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI.setupWithNavController
+import com.skinconnect.userapps.R
+import com.skinconnect.userapps.databinding.ActivityMainBinding
 
 class MainActivity : ComponentActivity() {
-    @SuppressLint("UnrememberedMutableState")
+
+    private lateinit var binding : ActivityMainBinding
+    private lateinit var navController : NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
+        binding= ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-            window.statusBarColor = MaterialTheme.colors.background.toArgb()
-            window.navigationBarColor = MaterialTheme.colors.background.toArgb()
+        navController = Navigation.findNavController(this,R.id.bottom_navigation)
+        setupWithNavController(binding.bottomNavigationView,navController)
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                window.navigationBarDividerColor =
-                    MaterialTheme.colors.onBackground.copy(alpha = 0.1f).toArgb()
-            }
-
-            val currentScreen = mutableStateOf<Screen>(Screen.Home)
-
-            CustomBottomNavigationTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-
-                    Scaffold(
-                        bottomBar = {
-                            CustomBottomNavigation(currentScreenId = currentScreen.value.id) {
-                                currentScreen.value = it
-                            }
-                        }
-                    ) {
-
-                    }
-
-                }
-            }
-
-
-        }
     }
 }

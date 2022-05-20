@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/scheduleFragment"
+        android:title="@string/schedule"
+        android:drawable="@drawable/ic_schedule_normal" /> <!-- default -->
+
+    <item
+        android:id="@+id/homeFragment"
+        android:title="@string/home"
+        android:drawable="@drawable/ic_home_normal" /> <!-- default -->
+
+    <item
+        android:id="@+id/profileFragment"
+        android:title="@string/profile"
+        android:drawable="@drawable/ic_profile_normal" /> <!-- default -->
+
+
+</menu>
