@@ -1,21 +1,26 @@
 package com.skinconnect.userapps.data.repository
 
-import androidx.lifecycle.liveData
+import androidx.lifecycle.MutableLiveData
 import com.skinconnect.userapps.data.remote.request.LoginRequest
 import com.skinconnect.userapps.data.remote.request.RegisterRequest
 import com.skinconnect.userapps.data.remote.retrofit.ApiService
 
-class AuthRepository(service: ApiService) : BaseRepository(service) {
-    fun login(request: LoginRequest) = liveData {
-        val response = service.login(request)
-        val apiCallLiveData = callApi(response)
-        emitSource(apiCallLiveData)
-    }
+class AuthRepository private constructor(service: ApiService) : BaseRepository(service) {
+    suspend fun login(request: LoginRequest, liveData: MutableLiveData<Result>) =
+        wrapEspressoIdlingResource {
+            try {
+                val response = service.login(request)
+                processResponse(response, liveData)
+            } catch (exception: Exception) {
+                catchError(exception, liveData)
+            }
+        }
 
-    fun register(request: RegisterRequest) = liveData {
+    suspend fun register(request: RegisterRequest, liveData: MutableLiveData<Result>) = try {
         val response = service.register(request)
-        val apiCallLiveData = callApi(response)
-        emitSource(apiCallLiveData)
+        processResponse(response, liveData)
+    } catch (exception: Exception) {
+        catchError(exception, liveData)
     }
 
     companion object {

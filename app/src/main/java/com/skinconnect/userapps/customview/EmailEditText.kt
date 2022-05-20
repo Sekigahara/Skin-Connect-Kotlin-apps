@@ -2,8 +2,10 @@ package com.skinconnect.userapps.customview
 
 import android.content.Context
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
+import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
 import com.skinconnect.userapps.R
 
@@ -30,6 +32,9 @@ class EmailEditText : AppCompatEditText {
      * is invalid show error, else hide error
      * */
     private fun init() {
+        inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+        textAlignment = View.TEXT_ALIGNMENT_VIEW_START
+
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}

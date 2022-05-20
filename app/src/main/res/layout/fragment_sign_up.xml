@@ -84,12 +84,23 @@
             android:id="@+id/cv_age"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="text" />
+            android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <Spinner-->
+<!--        android:id="@+id/etLayout_gender"-->
+<!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
+<!--        android:layout_width="321dp"-->
+<!--        android:layout_height="61dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:spinnerMode="dropdown"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/etLayout_age"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/etLayout_age"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/etLayout_age" />-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/etLayout_gender"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="321dp"
         android:layout_height="61dp"
         android:layout_marginTop="16dp"
@@ -103,11 +114,13 @@
         app:layout_constraintStart_toStartOf="@+id/etLayout_age"
         app:layout_constraintTop_toBottomOf="@id/etLayout_age">
 
-        <com.skinconnect.userapps.customview.EditText
-            android:id="@+id/cv_gender"
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextViewGender"
+            android:hint="@string/gender"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="text" />
+            android:inputType="none"
+            app:simpleItems="@array/gender_array" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -130,7 +143,7 @@
             android:id="@+id/cv_weight"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="text" />
+            android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView

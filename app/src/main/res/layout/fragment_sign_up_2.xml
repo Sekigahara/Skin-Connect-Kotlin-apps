@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
@@ -56,9 +57,9 @@
         android:layout_height="33dp"
         android:layout_marginTop="32dp"
         android:text="@string/create_account"
-        android:textSize="24sp"
         android:textAlignment="center"
         android:textColor="@color/black"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline2" />
@@ -68,9 +69,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/username"
+        android:textColor="@color/black"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/etLayout_username"
-        app:layout_constraintStart_toStartOf="@id/etLayout_username"
-        android:textColor="@color/black"/>
+        app:layout_constraintStart_toStartOf="@id/etLayout_username" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/etLayout_username"
@@ -79,7 +81,6 @@
         android:layout_height="61dp"
         android:layout_marginTop="32dp"
         android:hint="@string/hint_username"
-        app:startIconDrawable="@drawable/ic_profile_normal"
         android:textAlignment="center"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
@@ -87,7 +88,8 @@
         app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title">
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        app:startIconDrawable="@drawable/ic_profile_normal">
 
         <com.skinconnect.userapps.customview.EditText
             android:id="@+id/cv_username"
@@ -101,19 +103,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/email"
-        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/etLayout_email"
-        app:layout_constraintStart_toStartOf="@id/etLayout_email"
-        android:textColor="@color/black"/>
+        app:layout_constraintStart_toStartOf="@id/etLayout_email" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/etLayout_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="321dp"
         android:layout_height="61dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:hint="@string/hint_email"
-        app:startIconDrawable="@drawable/ic_baseline_email_24"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -121,7 +122,8 @@
         app:layout_constraintEnd_toEndOf="@+id/etLayout_username"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etLayout_username"
-        app:layout_constraintTop_toBottomOf="@id/etLayout_username">
+        app:layout_constraintTop_toBottomOf="@id/etLayout_username"
+        app:startIconDrawable="@drawable/ic_baseline_email_24">
 
         <com.skinconnect.userapps.customview.EmailEditText
             android:id="@+id/cv_email"
@@ -135,19 +137,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/password"
-        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/etLayout_password"
-        app:layout_constraintStart_toStartOf="@id/etLayout_password"
-        android:textColor="@color/black"/>
+        app:layout_constraintStart_toStartOf="@id/etLayout_password" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/etLayout_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="321dp"
         android:layout_height="61dp"
-        android:layout_marginTop="32dp"
-        android:hint="@string/hint_password"
-        app:startIconDrawable="@drawable/ic_baseline_password"
+        android:layout_marginTop="16dp"
+        android:hint="@string/password"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -155,7 +156,8 @@
         app:layout_constraintEnd_toEndOf="@+id/etLayout_email"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etLayout_email"
-        app:layout_constraintTop_toBottomOf="@id/etLayout_email">
+        app:layout_constraintTop_toBottomOf="@id/etLayout_email"
+        app:startIconDrawable="@drawable/ic_baseline_password">
 
         <com.skinconnect.userapps.customview.PasswordEditText
             android:id="@+id/cv_password"
@@ -178,5 +180,17 @@
         app:layout_constraintStart_toStartOf="@+id/etLayout_password"
         app:layout_constraintTop_toBottomOf="@id/etLayout_password"
         app:layout_constraintVertical_bias="0.176" />
+
+    <ProgressBar
+        android:id="@+id/progressBarRegister"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/btn_create"
+        app:layout_constraintStart_toStartOf="@+id/btn_create"
+        app:layout_constraintTop_toBottomOf="@+id/btn_create"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

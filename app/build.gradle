@@ -54,6 +54,10 @@ android {
         viewBinding true
         compose true
     }
+
+    testOptions {
+        animationsDisabled = true
+    }
 }
 
 dependencies {
