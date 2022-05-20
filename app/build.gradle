@@ -25,7 +25,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        manifestPlaceholders = [BASE_URL: keyPropertiesFile]
+        manifestPlaceholders = [BASE_URL: keyProperties['baseUrl']]
     }
 
     buildTypes {
