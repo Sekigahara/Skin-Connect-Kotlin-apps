@@ -4,17 +4,17 @@
     <item
         android:id="@+id/scheduleFragment"
         android:title="@string/schedule"
-        android:drawable="@drawable/ic_schedule_normal" /> <!-- default -->
+        android:icon="@drawable/ic_schedule_pressed"/><!-- default -->
 
     <item
         android:id="@+id/homeFragment"
         android:title="@string/home"
-        android:drawable="@drawable/ic_home_normal" /> <!-- default -->
+        android:icon="@drawable/ic_home_pressed" /> <!-- default -->
 
     <item
         android:id="@+id/profileFragment"
         android:title="@string/profile"
-        android:drawable="@drawable/ic_profile_normal" /> <!-- default -->
+        android:icon="@drawable/ic_profile_pressed" /> <!-- default -->
 
 
 </menu>

@@ -4,14 +4,23 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/button_home.xml" value="0.167" />
+        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/button_rounded.xml" value="0.193" />
         <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.167" />
+        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/ic_baseline_checklist_24.xml" value="0.1" />
+        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/ic_home_pressed.xml" value="0.1" />
+        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/ic_profile_pressed.xml" value="0.1" />
+        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/drawable/ic_schedule_pressed.xml" value="0.1" />
+        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/layout/activity_checkup.xml" value="0.2734375" />
         <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/layout/activity_schedule.xml" value="0.1" />
         <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/layout/fragment_home.xml" value="0.27447916666666666" />
         <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/layout/fragment_login.xml" value="0.1334853090172239" />
         <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/layout/fragment_profile.xml" value="0.27447916666666666" />
         <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/layout/fragment_schedule.xml" value="0.2604166666666667" />
         <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/layout/fragment_sign_up.xml" value="0.264" />
         <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/layout/fragment_sign_up_2.xml" value="0.27447916666666666" />
+        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/layout/item_schedule.xml" value="0.264" />
+        <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/layout/item_todo.xml" value="0.264" />
         <entry key="..\:/Program Files/Capstone Project/User/app/src/main/res/menu/nav_item.xml" value="0.2734375" />
         <entry key="app/src/main/res/drawable/bg_splash.xml" value="0.1775" />
         <entry key="app/src/main/res/drawable/button_home.xml" value="0.1775" />
