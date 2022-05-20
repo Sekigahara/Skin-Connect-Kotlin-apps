@@ -2,7 +2,6 @@ package com.skinconnect.userapps.ui.auth.register
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,15 +9,12 @@ import android.widget.Button
 import android.widget.ProgressBar
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import com.google.android.material.snackbar.Snackbar
 import com.skinconnect.userapps.R
 import com.skinconnect.userapps.customview.EditText
 import com.skinconnect.userapps.customview.EmailEditText
 import com.skinconnect.userapps.customview.PasswordEditText
 import com.skinconnect.userapps.data.remote.request.RegisterDetailsRequest
 import com.skinconnect.userapps.data.remote.request.RegisterRequest
-import com.skinconnect.userapps.data.repository.Result
 import com.skinconnect.userapps.databinding.FragmentSignUp2Binding
 import com.skinconnect.userapps.ui.MainActivity
 import com.skinconnect.userapps.ui.auth.RegisterViewModel
@@ -76,35 +72,15 @@ class SecondPageRegisterFragment : BaseFragment() {
         emailEditText.addTextChangedListener(textWatcher)
         passwordEditText.addTextChangedListener(textWatcher)
 
-        registerButton.setOnClickListener { view ->
+        registerButton.setOnClickListener {
             val username = "${usernameEditText.text}".trim()
             val email = "${emailEditText.text}".trim()
             val password = "${passwordEditText.text}".trim()
             val request =
                 RegisterRequest(username, email, password, password, registerDetailRequest)
+
             val viewModel = this.viewModel as RegisterViewModel
             viewModel.register(request)
-
-//            viewModel.register(request).observe(requireActivity()) { result ->
-//                Log.e("TAGGGGG", "RESULT IS $result")
-//                if (result == null) showLoading(registerButton, registerProgressBar)
-//                else {
-//                    when (result) {
-//                        is Result.Loading -> showLoading(registerButton, registerProgressBar)
-//                        is Result.Error -> {
-//                            Log.e("TAG A", "ERROR GAN")
-//                            showError(registerButton, registerProgressBar, result.error)
-//                        }
-//                        is Result.Success -> {
-//                            Log.e("TAG A", "SUKSES LOADING")
-//                            finishLoading(registerButton, registerProgressBar)
-//                            Snackbar.make(binding.root, "Success", Snackbar.LENGTH_SHORT).show()
-////                        view.findNavController()
-////                            .navigate(R.id.action_fragmentRegisterSecondPage_to_mainActivity)
-//                        }
-//                    }
-//                }
-//            }
         }
     }
 

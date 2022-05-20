@@ -1,6 +1,7 @@
 package com.skinconnect.userapps.data.repository
 
 import androidx.lifecycle.MutableLiveData
+import androidx.test.espresso.idling.CountingIdlingResource
 import com.skinconnect.userapps.data.remote.response.BaseResponse
 import com.skinconnect.userapps.data.remote.retrofit.ApiService
 import retrofit2.HttpException
@@ -26,4 +27,28 @@ open class BaseRepository(protected val service: ApiService) {
                 Result.Error("Please check your internet connection and try again.")
             else -> liveData.value = exception.message?.let { Result.Error(it) } as Result.Error
         }
+}
+
+object EspressoIdlingResource {
+    private const val RESOURCE = "GLOBAL"
+
+    @JvmField
+    val countingIdlingResource = CountingIdlingResource(RESOURCE)
+
+    fun increment() = countingIdlingResource.increment()
+
+    fun decrement() {
+        if (countingIdlingResource.isIdleNow) return
+        countingIdlingResource.decrement()
+    }
+}
+
+inline fun <T> wrapEspressoIdlingResource(function: () -> T): T {
+    EspressoIdlingResource.increment()
+
+    return try {
+        function()
+    } finally {
+        EspressoIdlingResource.decrement()
+    }
 }

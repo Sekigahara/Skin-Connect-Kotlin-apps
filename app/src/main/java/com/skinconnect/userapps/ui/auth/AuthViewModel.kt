@@ -10,18 +10,21 @@ import com.skinconnect.userapps.data.repository.AuthRepository
 import com.skinconnect.userapps.data.repository.Result
 import kotlinx.coroutines.launch
 
-open class AuthViewModel(protected val repository: AuthRepository) : ViewModel()
+open class AuthViewModel(protected val repository: AuthRepository) : ViewModel() {
+    protected val mutableResult = MutableLiveData<Result>()
+    val result : LiveData<Result> = mutableResult
+}
 
 class LoginViewModel(repository: AuthRepository) : AuthViewModel(repository) {
-//    fun login(request: LoginRequest) = repository.login(request)
+    fun login(request: LoginRequest) = viewModelScope.launch {
+        mutableResult.value = Result.Loading
+        repository.login(request, mutableResult)
+    }
 }
 
 class RegisterViewModel(repository: AuthRepository) : AuthViewModel(repository) {
-    private val _result = MutableLiveData<Result>()
-    val result : LiveData<Result> = _result
-
     fun register(request: RegisterRequest) = viewModelScope.launch {
-        _result.value = Result.Loading
-        repository.register(request, _result)
+        mutableResult.value = Result.Loading
+        repository.register(request, mutableResult)
     }
 }

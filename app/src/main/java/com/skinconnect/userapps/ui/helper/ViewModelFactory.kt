@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.skinconnect.userapps.data.repository.AuthRepository
 import com.skinconnect.userapps.data.repository.BaseRepository
 import com.skinconnect.userapps.di.Injection
+import com.skinconnect.userapps.ui.auth.LoginViewModel
 import com.skinconnect.userapps.ui.auth.RegisterViewModel
 
 @Suppress("UNCHECKED_CAST")
@@ -15,6 +16,8 @@ class ViewModelFactory private constructor(
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(RegisterViewModel::class.java))
             return RegisterViewModel(repository as AuthRepository) as T
+        if (modelClass.isAssignableFrom(LoginViewModel::class.java))
+            return LoginViewModel(repository as AuthRepository) as T
 
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }

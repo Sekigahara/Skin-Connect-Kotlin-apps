@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
@@ -24,6 +25,7 @@
         android:layout_height="wrap_content"
         android:text="@string/email"
         android:textColor="@color/black"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/etLayout_email"
         app:layout_constraintStart_toStartOf="@id/etLayout_email" />
 
@@ -53,9 +55,9 @@
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="@string/password"
         android:textColor="@color/black"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/etLayout_password"
         app:layout_constraintStart_toStartOf="@id/etLayout_password" />
 
@@ -64,8 +66,8 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="321dp"
         android:layout_height="61dp"
-        android:layout_marginTop="32dp"
-        android:hint="@string/hint_password"
+        android:layout_marginTop="16dp"
+        android:hint="@string/password"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -94,12 +96,12 @@
         app:layout_constraintTop_toBottomOf="@id/etLayout_password" />
 
     <Button
-        android:id="@+id/btn_create"
+        android:id="@+id/btn_login"
         android:layout_width="266dp"
         android:layout_height="51dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/button_rounded"
-        android:text="@string/create"
+        android:text="@string/login"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/etLayout_password"
@@ -114,5 +116,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="123dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBarLogin"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/btn_login"
+        app:layout_constraintStart_toStartOf="@+id/btn_login"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

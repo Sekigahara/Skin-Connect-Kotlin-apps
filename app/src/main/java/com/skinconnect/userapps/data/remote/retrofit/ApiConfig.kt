@@ -9,14 +9,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
+    lateinit var baseUrl: String
+
     fun getApiService(context: Context): ApiService {
         val loggingInterceptor =
             if (BuildConfig.DEBUG)
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             else
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
-
-        val baseUrl: String
 
         context.packageManager
             .getApplicationInfo(context.packageName, PackageManager.GET_META_DATA)

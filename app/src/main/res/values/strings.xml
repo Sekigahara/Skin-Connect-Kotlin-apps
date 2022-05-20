@@ -21,9 +21,8 @@
     <string name="content_desc">Description</string>
 
     //Hint
-    <string name="hint_username">abc123</string>
-    <string name="hint_email">abc@123.com</string>
-    <string name="hint_password">••••••</string>
+    <string name="hint_username">Username (abc123)</string>
+    <string name="hint_email">Email (abc@123.com)</string>
 
     //Component
     <string name="skip">Skip</string>
@@ -61,4 +60,5 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+    <string name="login">Login</string>
 </resources>

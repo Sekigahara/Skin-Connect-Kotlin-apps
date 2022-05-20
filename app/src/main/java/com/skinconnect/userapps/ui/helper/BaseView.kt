@@ -59,6 +59,7 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     private fun showError(button: Button, progressBar: ProgressBar, message: String) {
         finishLoading(button, progressBar)
+//        Snackbar.make(binding.root, "Something went wrong. $message", Snackbar.LENGTH_SHORT).show()
         Snackbar.make(binding.root, "Something went wrong. $message", Snackbar.LENGTH_SHORT).show()
     }
 
