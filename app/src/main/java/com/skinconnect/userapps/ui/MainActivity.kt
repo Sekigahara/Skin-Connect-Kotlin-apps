@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        navController = Navigation.findNavController(this,R.id.bottom_navigation)
+        navController = Navigation.findNavController(this,R.id.activity_main_nav_host)
         setupWithNavController(binding.bottomNavigationView,navController)
 
     }
