@@ -83,15 +83,15 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.7.0'
 
     // Android Library: CameraX
-    implementation 'androidx.camera:camera-camera2:1.1.0-rc01'
-    implementation 'androidx.camera:camera-lifecycle:1.1.0-rc01'
-    implementation 'androidx.camera:camera-view:1.1.0-rc01'
+    implementation 'androidx.camera:camera-camera2:1.2.0-alpha01'
+    implementation 'androidx.camera:camera-lifecycle:1.2.0-alpha01'
+    implementation 'androidx.camera:camera-view:1.2.0-alpha01'
 
     // Android Library: Local data
     implementation 'androidx.datastore:datastore-preferences:1.0.0'
 
     // Android Library: Splash Screen
-    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
+    implementation 'androidx.core:core-splashscreen:1.0.0-rc01'
 
     // Android Library: Maps
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
@@ -122,6 +122,7 @@ dependencies {
 
     // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
     implementation 'androidx.compose.foundation:foundation:1.1.1'
+    implementation 'com.airbnb.android:lottie:4.2.0'
 
     // Material Design
     implementation 'androidx.compose.material:material:1.1.1'
