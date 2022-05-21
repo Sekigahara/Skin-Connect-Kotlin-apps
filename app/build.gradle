@@ -122,6 +122,7 @@ dependencies {
 
     // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
     implementation 'androidx.compose.foundation:foundation:1.1.1'
+    implementation 'com.airbnb.android:lottie:4.2.0'
 
     // Material Design
     implementation 'androidx.compose.material:material:1.1.1'

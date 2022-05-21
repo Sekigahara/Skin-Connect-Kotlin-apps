@@ -10,6 +10,7 @@
     <string name="find_clinic">Find Clinic</string>
     <string name="how_are">How are you feeling today?</string>
     <string name="your_doctors">Your doctors</string>
+    <string name="skin_cancer">Skin Cancer Screening</string>
 
     //OnBoarding
     <string name="register_here">Don’t  have an account?  Sign Up</string>
@@ -19,6 +20,9 @@
     <string name="doctors_desc">Find the perfect doctors\n that fits your need</string>
     <string name="clinic_desc">Find the best clinics\n around you</string>
     <string name="content_desc">Description</string>
+    <string name="what_isit">What is it use for?</string>
+    <string name="skin_cancer_desc">A skin cancer screening is used to look for signs\nof skin cancer. It is not used to diagnose cancer.\nIf skin cancer is suspected after a screening,\na test called a biopsy will be needed to find out\nwhether you have cancer.</string>
+    <string name="photo_result">Your skin has been diagnosed \n as %1$s  </string>
 
     //Hint
     <string name="hint_username">Username (abc123)</string>
@@ -61,4 +65,10 @@
         <item>Female</item>
     </string-array>
     <string name="login">Login</string>
+    <string name="checkup">Check Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="greetings">Hello User</string>
+    <string name="action">Action Schedule</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="find_doctors">Find Doctors</string>
 </resources>
