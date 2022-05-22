@@ -60,6 +60,7 @@
     <string name="input_error_email">Invalid Email Entered</string>
     <string name="input_error_password">Invalid Password Entered</string>
     <string name="date">Sunday</string>
+    <string name="dayToday">%s</string>
     <string-array name="gender_array">
         <item>Male</item>
         <item>Female</item>

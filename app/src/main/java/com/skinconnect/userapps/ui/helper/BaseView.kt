@@ -13,6 +13,9 @@ import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
 import com.skinconnect.userapps.data.repository.Result
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 interface BaseView {
     fun setupView()
@@ -111,4 +114,9 @@ object FormValidator {
 
     fun validatePassword(password: String) =
         password.trim().isNotEmpty() && password.trim().length >= 6
+}
+fun String.withDateFormat(): String {
+    val patternSource = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
+    val date = patternSource.parse(this) as Date
+    return DateFormat.getDateInstance(DateFormat.DEFAULT).format(date)
 }
