@@ -8,7 +8,7 @@
     tools:context=".ui.main.HomeFragment">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
@@ -17,7 +17,8 @@
         app:layout_constraintBottom_toTopOf="@id/guideline3"
         app:layout_constraintEnd_toStartOf="@id/fab_doctors_fav"
         app:layout_constraintHorizontal_bias="0.061"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@tools:sample/date/ddmmyy"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_doctors_fav"
@@ -42,6 +43,7 @@
         app:layout_constraintTop_toBottomOf="@id/guideline3" />
 
     <TextView
+        android:id="@+id/tv_daily_goal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/daily_goal"
@@ -57,29 +59,27 @@
         android:layout_width="166dp"
         android:layout_height="51dp"
         android:layout_margin="16dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/placeholder"
         android:backgroundTint="@color/purple_btn"
         android:text="@string/discover"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.189" />
+        app:layout_constraintVertical_bias="0.425" />
 
     <Button
         android:id="@+id/btn_checkup"
-        android:layout_width="167dp"
+        android:layout_width="166dp"
         android:layout_height="51dp"
         android:layout_margin="16dp"
-        android:background="@drawable/placeholder"
         android:backgroundTint="@color/purple_btn"
         android:text="@string/checkup"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_discover"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.189" />
+        app:layout_constraintVertical_bias="0.425" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"

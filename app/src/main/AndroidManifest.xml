@@ -22,10 +22,16 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.discover.DiscoverActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.checkup.CheckupActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.auth.AuthActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.SplashActivity"
             android:exported="false" />
 
         <meta-data
@@ -33,7 +39,7 @@
             android:value="${BASE_URL}" />
 
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true"
             android:theme="@style/MySplashScreen">
             <intent-filter>
