@@ -2,10 +2,10 @@ package com.skinconnect.userapps.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.skinconnect.userapps.ui.helper.BaseActivity
+import com.skinconnect.userapps.ui.auth.AuthActivity
 import com.skinconnect.userapps.ui.helper.BaseView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -27,7 +27,7 @@ class SplashActivity : AppCompatActivity(), BaseView {
              delay(1000)
 
             withContext(Dispatchers.Main) {
-                val intent = Intent(this@SplashActivity, BaseActivity::class.java)
+                    val intent = Intent(this@SplashActivity, AuthActivity::class.java)
                 startActivity(intent)
                 finish()
             }

@@ -22,10 +22,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
-            android:name=".ui.helper.BaseActivity"
+            android:name=".ui.auth.AuthActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="false" />
 
         <meta-data

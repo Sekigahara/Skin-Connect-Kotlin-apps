@@ -1,12 +1,7 @@
 package com.skinconnect.userapps.ui.auth
 
-import androidx.lifecycle.MutableLiveData
-import com.skinconnect.userapps.data.repository.Result
 import com.skinconnect.userapps.util.DataDummy
-import com.skinconnect.userapps.util.getOrAwaitValue
-import org.junit.Assert
 import org.junit.Test
-import org.mockito.Mockito
 
 class RegisterViewModelTest : AuthViewModelTest() {
     private var dummyRequest = DataDummy.generateDummyRegisterRequest()

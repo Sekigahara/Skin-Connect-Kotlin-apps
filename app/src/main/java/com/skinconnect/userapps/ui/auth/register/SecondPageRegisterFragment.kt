@@ -16,7 +16,7 @@ import com.skinconnect.userapps.customview.PasswordEditText
 import com.skinconnect.userapps.data.remote.request.RegisterDetailsRequest
 import com.skinconnect.userapps.data.remote.request.RegisterRequest
 import com.skinconnect.userapps.databinding.FragmentSignUp2Binding
-import com.skinconnect.userapps.ui.MainActivity
+import com.skinconnect.userapps.ui.main.MainActivity
 import com.skinconnect.userapps.ui.auth.RegisterViewModel
 import com.skinconnect.userapps.ui.helper.BaseFragment
 import com.skinconnect.userapps.ui.helper.FormValidator

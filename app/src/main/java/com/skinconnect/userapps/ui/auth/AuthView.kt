@@ -1,5 +1,6 @@
 package com.skinconnect.userapps.ui.auth
 
+import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +9,8 @@ import com.skinconnect.userapps.data.remote.request.LoginRequest
 import com.skinconnect.userapps.data.remote.request.RegisterRequest
 import com.skinconnect.userapps.data.repository.AuthRepository
 import com.skinconnect.userapps.data.repository.Result
+import com.skinconnect.userapps.databinding.ActivityHostBinding
+import com.skinconnect.userapps.ui.helper.BaseActivity
 import kotlinx.coroutines.launch
 
 open class AuthViewModel(protected val repository: AuthRepository) : ViewModel() {
@@ -27,4 +30,14 @@ class RegisterViewModel(repository: AuthRepository) : AuthViewModel(repository) 
         mutableResult.value = Result.Loading
         repository.register(request, mutableResult)
     }
+}
+
+class AuthActivity : BaseActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val viewBinding = ActivityHostBinding.inflate(layoutInflater)
+        onCreateActivity(savedInstanceState, viewBinding)
+    }
+
+    override fun setupView() { supportActionBar?.hide() }
 }

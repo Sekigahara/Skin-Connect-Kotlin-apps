@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
 import com.skinconnect.userapps.data.repository.Result
-import com.skinconnect.userapps.databinding.ActivityHostBinding
 
 interface BaseView {
     fun setupView()
@@ -21,20 +20,18 @@ interface BaseView {
     fun setupAction()
 }
 
-class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
     private var viewBinding: ViewBinding? = null
+    protected val binding get() = viewBinding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewBinding = ActivityHostBinding.inflate(layoutInflater)
-        setContentView((viewBinding as ActivityHostBinding).root)
+    protected fun onCreateActivity(savedInstanceState: Bundle?, viewBinding: ViewBinding) {
+        this.viewBinding = viewBinding
+        setContentView(binding.root)
         if (savedInstanceState != null) return
         setupView()
     }
 
-    private fun setupView() {
-        supportActionBar?.hide()
-    }
+    protected abstract fun setupView()
 
     override fun onDestroy() {
         super.onDestroy()
@@ -59,7 +56,6 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     private fun showError(button: Button, progressBar: ProgressBar, message: String) {
         finishLoading(button, progressBar)
-//        Snackbar.make(binding.root, "Something went wrong. $message", Snackbar.LENGTH_SHORT).show()
         Snackbar.make(binding.root, "Something went wrong. $message", Snackbar.LENGTH_SHORT).show()
     }
 
