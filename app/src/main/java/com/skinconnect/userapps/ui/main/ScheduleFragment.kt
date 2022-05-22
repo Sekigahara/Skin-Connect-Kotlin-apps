@@ -1,4 +1,4 @@
-package com.skinconnect.userapps.ui.bottomNav
+package com.skinconnect.userapps.ui.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
