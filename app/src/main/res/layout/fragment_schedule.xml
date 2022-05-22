@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
-    tools:context=".ui.bottomNav.ScheduleFragment">
+    tools:context=".ui.main.ScheduleFragment">
 
     <ImageButton
         android:id="@+id/buttonBackSchedule"
@@ -44,7 +44,8 @@
         app:layout_constraintBottom_toTopOf="@id/guideline3"
         app:layout_constraintEnd_toStartOf="@id/fab_doctors_fav"
         app:layout_constraintHorizontal_bias="0.061"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="NotSibling" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_schedule"
@@ -64,7 +65,5 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="178dp" />
-
-    <include layout="@layout/activity_main"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

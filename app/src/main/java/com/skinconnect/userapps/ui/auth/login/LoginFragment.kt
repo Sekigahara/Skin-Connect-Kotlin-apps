@@ -14,7 +14,7 @@ import com.skinconnect.userapps.customview.EmailEditText
 import com.skinconnect.userapps.customview.PasswordEditText
 import com.skinconnect.userapps.data.remote.request.LoginRequest
 import com.skinconnect.userapps.databinding.FragmentLoginBinding
-import com.skinconnect.userapps.ui.MainActivity
+import com.skinconnect.userapps.ui.main.MainActivity
 import com.skinconnect.userapps.ui.auth.LoginViewModel
 import com.skinconnect.userapps.ui.helper.BaseFragment
 import com.skinconnect.userapps.ui.helper.FormValidator

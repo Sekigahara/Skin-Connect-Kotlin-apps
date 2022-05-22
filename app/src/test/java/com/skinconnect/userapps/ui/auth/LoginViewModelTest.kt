@@ -1,13 +1,7 @@
 package com.skinconnect.userapps.ui.auth
 
-import androidx.lifecycle.MutableLiveData
-import com.skinconnect.userapps.data.repository.Result
 import com.skinconnect.userapps.util.DataDummy
-import com.skinconnect.userapps.util.getOrAwaitValue
-import org.junit.Assert
 import org.junit.Test
-import org.mockito.Mockito
-import org.mockito.Mockito.`when`
 
 class LoginViewModelTest : AuthViewModelTest() {
     private val dummyRequest = DataDummy.generateDummyLoginRequest()
