@@ -2,7 +2,7 @@ package com.skinconnect.userapps.data.remote
 
 import android.content.Context
 import android.content.pm.PackageManager
-import androidx.viewbinding.BuildConfig
+import com.skinconnect.userapps.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
