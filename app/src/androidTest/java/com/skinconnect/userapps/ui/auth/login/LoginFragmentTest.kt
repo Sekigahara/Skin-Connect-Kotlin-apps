@@ -8,7 +8,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.skinconnect.userapps.R
-import com.skinconnect.userapps.data.remote.retrofit.ApiConfig
+import com.skinconnect.userapps.data.remote.ApiConfig
 import com.skinconnect.userapps.data.repository.EspressoIdlingResource
 import com.skinconnect.userapps.util.JsonConverter
 import okhttp3.mockwebserver.MockResponse

@@ -8,6 +8,7 @@ import com.skinconnect.userapps.data.repository.BaseRepository
 import com.skinconnect.userapps.di.Injection
 import com.skinconnect.userapps.ui.auth.LoginViewModel
 import com.skinconnect.userapps.ui.auth.RegisterViewModel
+import com.skinconnect.userapps.ui.auth.SplashViewModel
 
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory private constructor(
@@ -18,6 +19,8 @@ class ViewModelFactory private constructor(
             return RegisterViewModel(repository as AuthRepository) as T
         if (modelClass.isAssignableFrom(LoginViewModel::class.java))
             return LoginViewModel(repository as AuthRepository) as T
+        if (modelClass.isAssignableFrom(SplashViewModel::class.java))
+            return SplashViewModel(repository as AuthRepository) as T
 
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }

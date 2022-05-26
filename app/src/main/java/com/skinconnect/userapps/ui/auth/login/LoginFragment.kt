@@ -12,7 +12,9 @@ import androidx.navigation.Navigation
 import com.skinconnect.userapps.R
 import com.skinconnect.userapps.customview.EmailEditText
 import com.skinconnect.userapps.customview.PasswordEditText
-import com.skinconnect.userapps.data.remote.request.LoginRequest
+import com.skinconnect.userapps.data.remote.LoginRequest
+import com.skinconnect.userapps.data.remote.response.LoginResponse
+import com.skinconnect.userapps.data.repository.Result
 import com.skinconnect.userapps.databinding.FragmentLoginBinding
 import com.skinconnect.userapps.ui.main.MainActivity
 import com.skinconnect.userapps.ui.auth.LoginViewModel
@@ -59,6 +61,9 @@ class LoginFragment : BaseFragment() {
 
         viewModel.result.observe(requireActivity()) {
             observeResultLiveData(it, loginButton, progressBar) {
+                val response = it as Result.Success<*>
+                val data = response.data as LoginResponse
+                viewModel.saveUserToken(data.token)
                 val intent = Intent(requireContext(), MainActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish()

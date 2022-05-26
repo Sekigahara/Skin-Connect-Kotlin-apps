@@ -13,8 +13,8 @@ import com.skinconnect.userapps.R
 import com.skinconnect.userapps.customview.EditText
 import com.skinconnect.userapps.customview.EmailEditText
 import com.skinconnect.userapps.customview.PasswordEditText
-import com.skinconnect.userapps.data.remote.request.RegisterDetailsRequest
-import com.skinconnect.userapps.data.remote.request.RegisterRequest
+import com.skinconnect.userapps.data.remote.RegisterRequest
+import com.skinconnect.userapps.data.remote.response.RegisterDetails
 import com.skinconnect.userapps.databinding.FragmentSignUp2Binding
 import com.skinconnect.userapps.ui.main.MainActivity
 import com.skinconnect.userapps.ui.auth.RegisterViewModel
@@ -24,7 +24,7 @@ import com.skinconnect.userapps.ui.helper.ViewHelper
 import com.skinconnect.userapps.ui.helper.ViewModelFactory
 
 class SecondPageRegisterFragment : BaseFragment() {
-    private lateinit var registerDetailRequest: RegisterDetailsRequest
+    private lateinit var registerDetailRequest: RegisterDetails
     private lateinit var usernameEditText: EditText
     private lateinit var emailEditText: EmailEditText
     private lateinit var passwordEditText: PasswordEditText
@@ -77,7 +77,7 @@ class SecondPageRegisterFragment : BaseFragment() {
             val email = "${emailEditText.text}".trim()
             val password = "${passwordEditText.text}".trim()
             val request =
-                RegisterRequest(username, email, password, password, registerDetailRequest)
+                RegisterRequest(username, password, registerDetailRequest, email, password)
 
             val viewModel = this.viewModel as RegisterViewModel
             viewModel.register(request)
