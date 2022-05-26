@@ -1,9 +1,12 @@
 package com.skinconnect.userapps.data.repository
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.test.espresso.idling.CountingIdlingResource
+import com.google.gson.Gson
+import com.skinconnect.userapps.BuildConfig
+import com.skinconnect.userapps.data.remote.ApiService
 import com.skinconnect.userapps.data.remote.response.BaseResponse
-import com.skinconnect.userapps.data.remote.retrofit.ApiService
 import retrofit2.HttpException
 import java.net.UnknownHostException
 
@@ -14,18 +17,34 @@ sealed class Result private constructor() {
 }
 
 open class BaseRepository(protected val service: ApiService) {
+    private val gson = Gson()
+
     protected fun processResponse(response: BaseResponse, liveData: MutableLiveData<Result>) {
         val isSuccess = response.status.lowercase().contains("success")
-        if (isSuccess) liveData.value = Result.Success(response.message)
+        if (isSuccess) liveData.value = Result.Success(response)
         else liveData.value = Result.Error(response.message)
     }
 
     protected fun catchError(exception: Exception, liveData: MutableLiveData<Result>) =
         when (exception) {
-            is HttpException -> liveData.value = Result.Error(exception.message())
+            is HttpException -> {
+                val errorBody = exception.response()?.errorBody()
+                val response = gson.fromJson(errorBody?.string(), BaseResponse::class.java)
+
+                if (BuildConfig.DEBUG) {
+                    Log.e("HTTPException", response.message)
+                }
+                liveData.value = Result.Error(response.message)
+            }
             is UnknownHostException -> liveData.value =
                 Result.Error("Please check your internet connection and try again.")
-            else -> liveData.value = exception.message?.let { Result.Error(it) } as Result.Error
+            else -> liveData.value = exception.message?.let {
+                if (BuildConfig.DEBUG) {
+                    Log.e("TAGG", "${exception.message}\n")
+                    exception.printStackTrace()
+                }
+                Result.Error(it)
+            } as Result.Error
         }
 }
 

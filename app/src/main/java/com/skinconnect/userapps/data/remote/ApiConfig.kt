@@ -1,4 +1,4 @@
-package com.skinconnect.userapps.data.remote.retrofit
+package com.skinconnect.userapps.data.remote
 
 import android.content.Context
 import android.content.pm.PackageManager

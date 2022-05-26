@@ -1,8 +1,8 @@
 package com.skinconnect.userapps.data.repository
 
-import com.skinconnect.userapps.data.remote.request.LoginRequest
-import com.skinconnect.userapps.data.remote.request.RegisterRequest
-import com.skinconnect.userapps.data.remote.retrofit.ApiService
+import com.skinconnect.userapps.data.remote.ApiService
+import com.skinconnect.userapps.data.remote.LoginRequest
+import com.skinconnect.userapps.data.remote.RegisterRequest
 import com.skinconnect.userapps.util.DataDummy
 
 class FakeApiService : ApiService {
