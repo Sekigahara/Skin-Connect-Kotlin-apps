@@ -1,10 +1,10 @@
 package com.skinconnect.userapps.data.repository
 
 import androidx.lifecycle.MutableLiveData
+import com.skinconnect.userapps.data.entity.LoginRequest
+import com.skinconnect.userapps.data.entity.RegisterRequest
 import com.skinconnect.userapps.data.local.UserPreferences
 import com.skinconnect.userapps.data.remote.ApiService
-import com.skinconnect.userapps.data.remote.LoginRequest
-import com.skinconnect.userapps.data.remote.RegisterRequest
 
 class AuthRepository private constructor(
     service: ApiService,

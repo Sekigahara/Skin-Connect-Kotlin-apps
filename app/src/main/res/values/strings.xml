@@ -77,4 +77,6 @@
     <string name="are_you_sure">Are you sure?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="back_to_home">Back to Home</string>
+    <string name="refresh">Refresh</string>
 </resources>

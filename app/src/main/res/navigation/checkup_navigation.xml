@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/checkup_navigation"
+    app:startDestination="@id/checkupStartFragment">
+
+    <fragment
+        android:id="@+id/checkupStartFragment"
+        android:name="com.skinconnect.userapps.ui.checkup.CheckupStartFragment"
+        android:label="CheckupStartFragment"
+        tools:layout="@layout/fragment_checkup_start" >
+        <action
+            android:id="@+id/action_checkupStartFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.skinconnect.userapps.ui.checkup.CameraFragment"
+        android:label="CameraFragment"
+        tools:layout="@layout/fragment_camera" >
+        <action
+            android:id="@+id/action_cameraFragment_to_checkupStatusFragment"
+            app:destination="@id/checkupStatusFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkupStatusFragment"
+        android:name="com.skinconnect.userapps.ui.checkup.CheckupStatusFragment"
+        android:label="CheckupStatusFragment"
+        tools:layout="@layout/fragment_checkup_status"/>
+</navigation>

@@ -2,11 +2,11 @@ package com.skinconnect.userapps.ui.auth
 
 import android.os.Bundle
 import androidx.lifecycle.*
-import com.skinconnect.userapps.data.remote.LoginRequest
-import com.skinconnect.userapps.data.remote.RegisterRequest
+import com.skinconnect.userapps.data.entity.LoginRequest
+import com.skinconnect.userapps.data.entity.RegisterRequest
 import com.skinconnect.userapps.data.repository.AuthRepository
 import com.skinconnect.userapps.data.repository.Result
-import com.skinconnect.userapps.databinding.ActivityHostBinding
+import com.skinconnect.userapps.databinding.ActivityAuthBinding
 import com.skinconnect.userapps.ui.helper.BaseActivity
 import kotlinx.coroutines.launch
 
@@ -38,7 +38,7 @@ class SplashViewModel(repository: AuthRepository) : AuthViewModel(repository) {
 class AuthActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewBinding = ActivityHostBinding.inflate(layoutInflater)
+        val viewBinding = ActivityAuthBinding.inflate(layoutInflater)
         onCreateActivity(savedInstanceState, viewBinding)
     }
 
