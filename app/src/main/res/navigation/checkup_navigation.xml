@@ -35,5 +35,14 @@
         android:id="@+id/checkupStatusFragment"
         android:name="com.skinconnect.userapps.ui.checkup.CheckupStatusFragment"
         android:label="CheckupStatusFragment"
-        tools:layout="@layout/fragment_checkup_status"/>
+        tools:layout="@layout/fragment_checkup_status">
+        <action
+            android:id="@+id/action_checkupStatusFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment"
+            app:popUpTo="@id/cameraFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="photoFile"
+            app:argType="com.skinconnect.userapps.data.entity.PhotoFile" />
+    </fragment>
 </navigation>

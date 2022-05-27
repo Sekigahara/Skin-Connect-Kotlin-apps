@@ -44,8 +44,8 @@
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.2653985507246377" />
         <entry key="app/src/main/res/layout/activity_test_main.xml" value="0.25271739130434784" />
         <entry key="app/src/main/res/layout/fragment_camera.xml" value="0.20208333333333334" />
-        <entry key="app/src/main/res/layout/fragment_checkup_start.xml" value="0.19479166666666667" />
-        <entry key="app/src/main/res/layout/fragment_checkup_status.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/fragment_checkup_start.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_checkup_status.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />

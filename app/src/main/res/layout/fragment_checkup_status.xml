@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imageViewPhotoResult"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="24dp"
@@ -30,18 +30,18 @@
         android:textAlignment="center"
         android:textColor="@color/purple_btn"
         android:textSize="20sp"
+        android:text="@string/upload_photo"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TextContrastCheck"
-        tools:text="Your skin has been diagnosed as normal asynmetric" />
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/buttonBackToHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="72dp"
-        android:background="@drawable/button_rounded"
+        android:backgroundTint="@color/purple_btn"
         android:text="@string/back_to_home"
         android:textColor="@color/white"
         android:visibility="gone"
@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="72dp"
-        android:background="@drawable/button_rounded"
+        android:backgroundTint="@color/purple_btn"
         android:text="@string/find_doctors"
         android:textColor="@color/white"
         android:visibility="gone"
@@ -67,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="72dp"
-        android:background="@drawable/button_rounded"
+        android:backgroundTint="@color/purple_btn"
         android:text="@string/refresh"
         android:textColor="@color/white"
         android:visibility="gone"
@@ -91,4 +91,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
+
+    <Button
+        android:id="@+id/buttonBackToCamera"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="72dp"
+        android:text="@string/no"
+        android:textColor="@color/purple_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintCircleRadius="70dp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonUploadPhoto"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/buttonUploadPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="72dp"
+        android:backgroundTint="@color/purple_btn"
+        android:text="@string/yes"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/buttonBackToCamera"
+        tools:ignore="TextContrastCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

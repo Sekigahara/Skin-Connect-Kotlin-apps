@@ -11,7 +11,7 @@
         android:layout_height="match_parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewTakePicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
@@ -22,14 +22,14 @@
         tools:ignore="ContentDescription" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageViewSwitchCamera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewTakePicture"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/imageViewTakePicture"
+        app:layout_constraintTop_toTopOf="@+id/imageViewTakePicture"
         app:srcCompat="@drawable/ic_switch_camera"
         tools:ignore="ContentDescription" />
 
