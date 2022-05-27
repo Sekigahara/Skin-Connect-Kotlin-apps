@@ -1,8 +1,7 @@
-package com.skinconnect.userapps.data.remote.response
+package com.skinconnect.userapps.data.entity.response
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
+import com.skinconnect.userapps.data.entity.RegisterDetails
 
 open class LoginResponse(
 	@field:SerializedName("token")
@@ -46,15 +45,3 @@ data class UserResponse(
 	@field:SerializedName("username")
 	val username: String
 )
-
-@Parcelize
-data class RegisterDetails(
-	@field:SerializedName("gender")
-	val gender: String,
-
-	@field:SerializedName("age")
-	val age: String,
-
-	@field:SerializedName("weight")
-	val weight: String
-) : Parcelable

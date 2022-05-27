@@ -6,7 +6,7 @@ import androidx.test.espresso.idling.CountingIdlingResource
 import com.google.gson.Gson
 import com.skinconnect.userapps.BuildConfig
 import com.skinconnect.userapps.data.remote.ApiService
-import com.skinconnect.userapps.data.remote.response.BaseResponse
+import com.skinconnect.userapps.data.entity.response.BaseResponse
 import retrofit2.HttpException
 import java.net.UnknownHostException
 

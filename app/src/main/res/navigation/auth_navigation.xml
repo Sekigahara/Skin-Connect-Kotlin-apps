@@ -42,7 +42,7 @@
             app:popUpToInclusive="true" />
         <argument
             android:name="request"
-            app:argType="com.skinconnect.userapps.data.remote.response.RegisterDetails" />
+            app:argType="com.skinconnect.userapps.data.entity.RegisterDetails" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

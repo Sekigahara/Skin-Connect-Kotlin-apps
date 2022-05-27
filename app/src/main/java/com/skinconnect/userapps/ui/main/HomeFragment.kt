@@ -8,17 +8,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.viewModels
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.skinconnect.userapps.R
 import com.skinconnect.userapps.databinding.FragmentHomeBinding
 import com.skinconnect.userapps.ui.auth.LoginViewModel
 import com.skinconnect.userapps.ui.checkup.CheckupActivity
 import com.skinconnect.userapps.ui.discover.DiscoverActivity
 import com.skinconnect.userapps.ui.helper.BaseFragment
 import com.skinconnect.userapps.ui.helper.ViewModelFactory
-import com.skinconnect.userapps.ui.helper.withDateFormat
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.util.*
 
 class HomeFragment : BaseFragment() {
 

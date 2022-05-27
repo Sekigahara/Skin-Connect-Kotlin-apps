@@ -1,9 +1,4 @@
-package com.skinconnect.userapps.data.remote
-
-import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
-import com.skinconnect.userapps.data.remote.response.RegisterDetails
-import kotlinx.parcelize.Parcelize
+package com.skinconnect.userapps.data.entity
 
 open class LoginRequest(private val email: String, private val password: String)
 

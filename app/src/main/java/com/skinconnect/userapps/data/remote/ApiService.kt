@@ -1,7 +1,9 @@
 package com.skinconnect.userapps.data.remote
 
-import com.skinconnect.userapps.data.remote.response.LoginResponse
-import com.skinconnect.userapps.data.remote.response.RegisterResponse
+import com.skinconnect.userapps.data.entity.LoginRequest
+import com.skinconnect.userapps.data.entity.RegisterRequest
+import com.skinconnect.userapps.data.entity.response.LoginResponse
+import com.skinconnect.userapps.data.entity.response.RegisterResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
 

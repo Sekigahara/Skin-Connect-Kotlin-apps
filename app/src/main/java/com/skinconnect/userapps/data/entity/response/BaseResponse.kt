@@ -1,4 +1,4 @@
-package com.skinconnect.userapps.data.remote.response
+package com.skinconnect.userapps.data.entity.response
 
 import com.google.gson.annotations.SerializedName
 
