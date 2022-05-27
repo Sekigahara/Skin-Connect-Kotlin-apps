@@ -13,8 +13,8 @@ import com.skinconnect.userapps.R
 import com.skinconnect.userapps.customview.EditText
 import com.skinconnect.userapps.customview.EmailEditText
 import com.skinconnect.userapps.customview.PasswordEditText
-import com.skinconnect.userapps.data.remote.RegisterRequest
-import com.skinconnect.userapps.data.remote.response.RegisterDetails
+import com.skinconnect.userapps.data.entity.RegisterDetails
+import com.skinconnect.userapps.data.entity.RegisterRequest
 import com.skinconnect.userapps.databinding.FragmentSignUp2Binding
 import com.skinconnect.userapps.ui.main.MainActivity
 import com.skinconnect.userapps.ui.auth.RegisterViewModel

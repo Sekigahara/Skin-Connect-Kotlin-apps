@@ -1,8 +1,9 @@
 package com.skinconnect.userapps.util
 
-import com.skinconnect.userapps.data.remote.LoginRequest
-import com.skinconnect.userapps.data.remote.RegisterRequest
-import com.skinconnect.userapps.data.remote.response.*
+import com.skinconnect.userapps.data.entity.LoginRequest
+import com.skinconnect.userapps.data.entity.RegisterDetails
+import com.skinconnect.userapps.data.entity.RegisterRequest
+import com.skinconnect.userapps.data.entity.response.*
 
 object DataDummy {
     fun generateDummyMessage() = "success"

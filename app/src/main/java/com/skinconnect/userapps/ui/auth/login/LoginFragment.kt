@@ -12,8 +12,8 @@ import androidx.navigation.Navigation
 import com.skinconnect.userapps.R
 import com.skinconnect.userapps.customview.EmailEditText
 import com.skinconnect.userapps.customview.PasswordEditText
-import com.skinconnect.userapps.data.remote.LoginRequest
-import com.skinconnect.userapps.data.remote.response.LoginResponse
+import com.skinconnect.userapps.data.entity.LoginRequest
+import com.skinconnect.userapps.data.entity.response.LoginResponse
 import com.skinconnect.userapps.data.repository.Result
 import com.skinconnect.userapps.databinding.FragmentLoginBinding
 import com.skinconnect.userapps.ui.main.MainActivity

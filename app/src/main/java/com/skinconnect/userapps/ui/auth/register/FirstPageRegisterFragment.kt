@@ -9,7 +9,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.skinconnect.userapps.R
 import com.skinconnect.userapps.customview.EditText
-import com.skinconnect.userapps.data.remote.response.RegisterDetails
+import com.skinconnect.userapps.data.entity.RegisterDetails
 import com.skinconnect.userapps.databinding.FragmentSignUpBinding
 import com.skinconnect.userapps.ui.helper.BaseFragment
 import com.skinconnect.userapps.ui.helper.FormValidator
