@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "626093899058",
+    "project_id": "skinconnect-storage",
+    "storage_bucket": "skinconnect-storage.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626093899058:android:afa00821c84aa53bd8eb2b",
+        "android_client_info": {
+          "package_name": "com.skinconnect.userapps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "626093899058-lonftpfn5spurq3e1t3dlai9ieiv6cge.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA046fBt5CipiFwVvAYcIgMKVM0A01FxXQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "626093899058-lonftpfn5spurq3e1t3dlai9ieiv6cge.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
