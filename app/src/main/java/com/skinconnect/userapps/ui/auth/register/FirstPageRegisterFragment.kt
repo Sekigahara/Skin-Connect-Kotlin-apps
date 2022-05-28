@@ -9,7 +9,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.skinconnect.userapps.R
 import com.skinconnect.userapps.customview.EditText
-import com.skinconnect.userapps.data.remote.request.RegisterDetailsRequest
+import com.skinconnect.userapps.data.entity.RegisterDetails
 import com.skinconnect.userapps.databinding.FragmentSignUpBinding
 import com.skinconnect.userapps.ui.helper.BaseFragment
 import com.skinconnect.userapps.ui.helper.FormValidator
@@ -68,14 +68,14 @@ class FirstPageRegisterFragment : BaseFragment() {
             val age = "${ageEditText.text}"
             val gender = "${genderAutoCompleteTextView.text}"
             val weight = "${weightEditText.text}"
-            val request = RegisterDetailsRequest(gender, age, weight)
+            val request = RegisterDetails(gender, age, weight)
 
-            val toSecondRegisterOPageFragment =
+            val toSecondRegisterPageFragment =
                 FirstPageRegisterFragmentDirections.actionFragmentRegisterFirstPageToFragmentRegisterSecondPage(
                     request,
                 )
 
-            view.findNavController().navigate(toSecondRegisterOPageFragment)
+            view.findNavController().navigate(toSecondRegisterPageFragment)
         }
     }
 

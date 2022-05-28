@@ -1,7 +1,7 @@
 package com.skinconnect.userapps.data.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.skinconnect.userapps.data.remote.retrofit.ApiService
+import com.skinconnect.userapps.data.remote.ApiService
 import com.skinconnect.userapps.util.DataDummy
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
@@ -21,7 +21,8 @@ class AuthRepositoryTest {
     @Before
     fun setUp() {
         service = FakeApiService()
-        repository = AuthRepository.getInstance(service)
+//        preference =
+//        repository = AuthRepository.getInstance(service)
     }
 
     @Test
