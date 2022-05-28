@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <ImageView
+        android:id="@+id/rect_green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:contentDescription="@string/content_desc"
+        android:src="@drawable/ic_baseline_rectangle_green"
+        app:layout_constraintBottom_toTopOf="@id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.395"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/rect_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:contentDescription="@string/content_desc"
+        android:src="@drawable/ic_baseline_rectangle_gray"
+        app:layout_constraintBottom_toTopOf="@id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/rect_green"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="122dp" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="166dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/tell_me"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline2" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etLayout_age"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="321dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="32dp"
+        android:hint="@string/age"
+        app:startIconDrawable="@drawable/ic_age"
+        android:textAlignment="center"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+        <com.skinconnect.userapps.customview.EditText
+            android:id="@+id/cv_age"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <Spinner-->
+<!--        android:id="@+id/etLayout_gender"-->
+<!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
+<!--        android:layout_width="321dp"-->
+<!--        android:layout_height="61dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:spinnerMode="dropdown"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/etLayout_age"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/etLayout_age"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/etLayout_age" />-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etLayout_gender"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="321dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="16dp"
+        android:hint="@string/gender"
+        app:startIconDrawable="@drawable/ic_baseline_gender"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/etLayout_age"
+        app:layout_constraintStart_toStartOf="@+id/etLayout_age"
+        app:layout_constraintTop_toBottomOf="@id/etLayout_age">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextViewGender"
+            android:hint="@string/gender"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none"
+            app:simpleItems="@array/gender_array" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etLayout_weight"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="321dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="16dp"
+        android:hint="@string/weight"
+        app:startIconDrawable="@drawable/ic_baseline_weight"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/etLayout_gender"
+        app:layout_constraintStart_toStartOf="@+id/etLayout_gender"
+        app:layout_constraintTop_toBottomOf="@id/etLayout_gender">
+
+        <com.skinconnect.userapps.customview.EditText
+            android:id="@+id/cv_weight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/login_here"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/etLayout_weight"
+        app:layout_constraintTop_toBottomOf="@id/etLayout_weight" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="266dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button_rounded"
+        android:text="@string/next"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/etLayout_weight"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="@+id/etLayout_weight"
+        app:layout_constraintTop_toBottomOf="@id/etLayout_weight"
+        app:layout_constraintVertical_bias="0.176" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

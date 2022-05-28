@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/fragmentRegisterFirstPage">
+
+    <fragment
+        android:id="@+id/fragmentRegisterFirstPage"
+        android:name="com.skinconnect.userapps.ui.auth.register.FirstPageRegisterFragment"
+        android:label="FirstPageRegisterFragment"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_fragmentRegisterFirstPage_to_fragmentRegisterSecondPage"
+            app:destination="@id/fragmentRegisterSecondPage"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_fragmentRegisterFirstPage_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentRegisterSecondPage"
+        android:name="com.skinconnect.userapps.ui.auth.register.SecondPageRegisterFragment"
+        android:label="SecondPageRegisterFragment"
+        tools:layout="@layout/fragment_sign_up_2" >
+        <action
+            android:id="@+id/action_fragmentRegisterSecondPage_to_fragmentRegisterFirstPage"
+            app:destination="@id/fragmentRegisterFirstPage"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/fragmentRegisterFirstPage"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="request"
+            app:argType="com.skinconnect.userapps.data.entity.RegisterDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.skinconnect.userapps.ui.auth.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_fragmentRegisterFirstPage"
+            app:destination="@id/fragmentRegisterFirstPage"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/fragmentRegisterFirstPage"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

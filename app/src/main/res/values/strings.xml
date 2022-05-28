@@ -1,3 +1,80 @@
 <resources>
     <string name="app_name">User Skin Connect</string>
+
+    //Title Page
+    <string name="tell_me">Tell me more about yourself</string>
+    <string name="create_account">Create your Account</string>
+    <string name="log_into">Log into your account</string>
+    <string name="what_are">What are you looking for?</string>
+    <string name="find_doctor">Find your doctor</string>
+    <string name="find_clinic">Find Clinic</string>
+    <string name="how_are">How are you feeling today?</string>
+    <string name="your_doctors">Your doctors</string>
+    <string name="skin_cancer">Skin Cancer Screening</string>
+
+    //OnBoarding
+    <string name="register_here">Don’t  have an account?  Sign Up</string>
+    <string name="login_here">Already  have an account?  Log In</string>
+
+    //Description
+    <string name="doctors_desc">Find the perfect doctors\n that fits your need</string>
+    <string name="clinic_desc">Find the best clinics\n around you</string>
+    <string name="content_desc">Description</string>
+    <string name="what_isit">What is it use for?</string>
+    <string name="skin_cancer_desc">A skin cancer screening is used to look for signs\nof skin cancer. It is not used to diagnose cancer.\nIf skin cancer is suspected after a screening,\na test called a biopsy will be needed to find out\nwhether you have cancer.</string>
+    <string name="photo_result">Your skin has been diagnosed \n as %1$s  </string>
+
+    //Hint
+    <string name="hint_username">Username (abc123)</string>
+    <string name="hint_email">Email (abc@123.com)</string>
+
+    //Component
+    <string name="skip">Skip</string>
+    <string name="age">Your Age</string>
+    <string name="gender">Your Gender</string>
+    <string name="weight">Your Weight (Kg)</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="next">Next</string>
+    <string name="create">Create</string>
+    <string name="daily_goal">Daily Goal</string>
+    <string name="discover">Discover</string>
+    <string name="doctors">Doctors</string>
+    <string name="schedule">Schedule</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="clinic">Clinic</string>
+    <string name="message">Message</string>
+    <string name="online">Online</string>
+    <string name="input_chat">Type something</string>
+    <string name="send_message">Send a message</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="medicine">Medicine</string>
+    <string name="rest">Rest</string>
+    <string name="consult">Consult</string>
+    <string name="treatment">Treatment</string>
+    <string name="to_do">to-do list today</string>
+    <string name="mark_done">Mark done</string>
+    <string name="input_error_email">Invalid Email Entered</string>
+    <string name="input_error_password">Invalid Password Entered</string>
+    <string name="date">Sunday</string>
+    <string name="dayToday">%s</string>
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string name="login">Login</string>
+    <string name="checkup">Check Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="greetings">Hello User</string>
+    <string name="action">Action Schedule</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="find_doctors">Find Doctors</string>
+    <string name="logout_button">Logout Button</string>
+    <string name="logout">Logout</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
