@@ -2,10 +2,11 @@ package com.skinconnect.userapps.ui.auth
 
 import android.os.Bundle
 import androidx.lifecycle.*
-import com.skinconnect.userapps.data.remote.LoginRequest
-import com.skinconnect.userapps.data.remote.RegisterRequest
+import com.skinconnect.userapps.data.entity.LoginRequest
+import com.skinconnect.userapps.data.entity.RegisterRequest
 import com.skinconnect.userapps.data.repository.AuthRepository
 import com.skinconnect.userapps.data.repository.Result
+import com.skinconnect.userapps.data.repository.ScheduleRepository
 import com.skinconnect.userapps.databinding.ActivityHostBinding
 import com.skinconnect.userapps.ui.helper.BaseActivity
 import kotlinx.coroutines.launch

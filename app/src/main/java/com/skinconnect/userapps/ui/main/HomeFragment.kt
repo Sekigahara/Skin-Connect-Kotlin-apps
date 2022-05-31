@@ -18,7 +18,7 @@ import com.skinconnect.userapps.ui.helper.ViewModelFactory
 class HomeFragment : BaseFragment() {
 
     private lateinit var _tvDate : String
-    private lateinit var _fabDoctorsFav: FloatingActionButton
+    private lateinit var _fabDoctorsChat: FloatingActionButton
     private lateinit var _tvDailyGoal:String
     private lateinit var _btnDiscover: Button
     private lateinit var _btnCheckup: Button
@@ -50,7 +50,7 @@ class HomeFragment : BaseFragment() {
     override fun setupView() {
         val binding =  binding as FragmentHomeBinding
         _tvDate = binding.tvDate.toString()
-        _fabDoctorsFav = binding.fabDoctorsFav
+        _fabDoctorsChat = binding.fabDoctorsChat
         _tvDailyGoal = binding.tvDailyGoal.toString()
         _btnDiscover = binding.btnDiscover
         _btnCheckup = binding.btnCheckup

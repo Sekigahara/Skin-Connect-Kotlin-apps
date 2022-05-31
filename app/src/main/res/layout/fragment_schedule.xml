@@ -4,15 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/background"
-    tools:context=".ui.main.ScheduleFragment">
+    android:background="@color/background">
 
     <ImageButton
         android:id="@+id/buttonBackSchedule"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="16dp"
-        android:background="@drawable/ic_baseline_arrow_back_24"
+        android:background="@drawable/ic_arrow_left"
         android:contentDescription="@string/content_desc"
         app:layout_constraintBottom_toTopOf="@id/tv_greetingUser"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,12 +27,11 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/guideline3"
-        app:layout_constraintEnd_toStartOf="@id/fab_doctors_fav"
         app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/date_receive"
+        android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -42,7 +40,6 @@
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/tv_greetingUser"
         app:layout_constraintBottom_toTopOf="@id/guideline3"
-        app:layout_constraintEnd_toStartOf="@id/fab_doctors_fav"
         app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="NotSibling" />
@@ -53,6 +50,7 @@
         android:layout_height="0dp"
         android:overScrollMode="never"
         android:scrollbarSize="0dp"
+        tools:listitem="@layout/item_schedule"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,5 +63,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="178dp" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loader"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -113,7 +113,7 @@
         android:layout_marginTop="32dp"
         android:text="@string/to_do"
         android:textSize="24sp"
-        app:drawableLeftCompat="@drawable/ic_baseline_checklist_24"
+        app:drawableLeftCompat="@drawable/ic_list_check"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView" />
 
@@ -123,6 +123,7 @@
         android:layout_height="0dp"
         android:overScrollMode="never"
         android:scrollbarSize="0dp"
+        tools:listitem="@layout/item_todo"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -146,6 +147,6 @@
         app:fabSize="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_greetingUser"
-        app:srcCompat="@drawable/ic_baseline_exit" />
+        app:srcCompat="@drawable/ic_sign_out" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
