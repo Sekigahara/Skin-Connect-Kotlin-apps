@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiConfig {
     lateinit var baseUrl: String
 
-    fun getApiService(context: Context): ApiService {
+    fun getApiService(context: Context, isForMl: Boolean = false): ApiService {
         val loggingInterceptor =
             if (BuildConfig.DEBUG)
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -20,7 +20,9 @@ object ApiConfig {
 
         context.packageManager
             .getApplicationInfo(context.packageName, PackageManager.GET_META_DATA)
-            .apply { baseUrl = metaData.getString("BASE_URL").toString() }
+            .apply {
+                baseUrl = metaData.getString(if (isForMl) "BASE_URL_ML" else "BASE_URL").toString()
+            }
 
         val client = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)

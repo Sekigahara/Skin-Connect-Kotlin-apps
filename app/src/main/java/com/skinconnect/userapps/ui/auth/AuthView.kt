@@ -6,15 +6,12 @@ import com.skinconnect.userapps.data.entity.LoginRequest
 import com.skinconnect.userapps.data.entity.RegisterRequest
 import com.skinconnect.userapps.data.repository.AuthRepository
 import com.skinconnect.userapps.data.repository.Result
-import com.skinconnect.userapps.data.repository.ScheduleRepository
-import com.skinconnect.userapps.databinding.ActivityHostBinding
+import com.skinconnect.userapps.databinding.ActivityAuthBinding
 import com.skinconnect.userapps.ui.helper.BaseActivity
+import com.skinconnect.userapps.ui.helper.BaseViewModel
 import kotlinx.coroutines.launch
 
-open class AuthViewModel(protected val repository: AuthRepository) : ViewModel() {
-    protected val mutableResult = MutableLiveData<Result>()
-    val result : LiveData<Result> = mutableResult
-
+open class AuthViewModel(override val repository: AuthRepository) : BaseViewModel(repository) {
     fun saveUserToken(token: String) = viewModelScope.launch { repository.saveUserToken(token) }
 }
 
@@ -39,9 +36,11 @@ class SplashViewModel(repository: AuthRepository) : AuthViewModel(repository) {
 class AuthActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewBinding = ActivityHostBinding.inflate(layoutInflater)
+        val viewBinding = ActivityAuthBinding.inflate(layoutInflater)
         onCreateActivity(savedInstanceState, viewBinding)
     }
 
-    override fun setupView() { supportActionBar?.hide() }
+    override fun setupView() {
+        supportActionBar?.hide()
+    }
 }

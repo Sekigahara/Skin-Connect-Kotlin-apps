@@ -65,7 +65,7 @@ class ScheduleFragment : BaseFragment() {
     @SuppressLint("FragmentLiveDataObserve")
     override fun setupViewModel() {
         val binding = binding as FragmentScheduleBinding
-        val factory = ViewModelFactory.getInstance(requireContext())
+        val factory = ViewModelFactory.getScheduleInstance(requireContext())
         val viewModel: ScheduleViewModel by viewModels { factory }
         this.viewModel = viewModel
 
