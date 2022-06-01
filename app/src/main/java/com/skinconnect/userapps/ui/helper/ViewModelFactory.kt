@@ -6,11 +6,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.skinconnect.userapps.data.repository.AuthRepository
 import com.skinconnect.userapps.data.repository.BaseRepository
 import com.skinconnect.userapps.data.repository.CheckupRepository
+import com.skinconnect.userapps.data.repository.ScheduleRepository
 import com.skinconnect.userapps.di.Injection
 import com.skinconnect.userapps.ui.auth.LoginViewModel
 import com.skinconnect.userapps.ui.auth.RegisterViewModel
 import com.skinconnect.userapps.ui.auth.SplashViewModel
 import com.skinconnect.userapps.ui.checkup.CheckupViewModel
+import com.skinconnect.userapps.ui.main.schedule.ScheduleViewModel
 
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory private constructor(
@@ -25,6 +27,8 @@ class ViewModelFactory private constructor(
             return SplashViewModel(repository as AuthRepository) as T
         if (modelClass.isAssignableFrom(CheckupViewModel::class.java))
             return CheckupViewModel(repository as CheckupRepository) as T
+        if (modelClass.isAssignableFrom(ScheduleViewModel::class.java))
+            return ScheduleViewModel(repository as ScheduleRepository) as T
 
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }
@@ -53,5 +57,9 @@ class ViewModelFactory private constructor(
 
             return checkupInstance as ViewModelFactory
         }
+        fun getInstance(context: Context) : ViewModelFactory =
+            instance ?: synchronized(this) {
+                instance ?: ViewModelFactory(Injection.provideSchedule(context))
+            }.also { instance = it }
     }
 }

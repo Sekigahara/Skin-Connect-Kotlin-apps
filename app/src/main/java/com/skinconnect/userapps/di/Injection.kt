@@ -8,6 +8,7 @@ import com.skinconnect.userapps.data.local.UserPreferences
 import com.skinconnect.userapps.data.remote.ApiConfig
 import com.skinconnect.userapps.data.repository.AuthRepository
 import com.skinconnect.userapps.data.repository.CheckupRepository
+import com.skinconnect.userapps.data.repository.ScheduleRepository
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "user_data")
 
@@ -21,5 +22,10 @@ object Injection {
     fun provideCheckupInjection(context: Context): CheckupRepository {
         val service = ApiConfig.getApiService(context)
         return CheckupRepository.getInstance(service)
+    }
+    fun provideSchedule(context : Context): ScheduleRepository{
+        val service = ApiConfig.getApiService(context)
+        val preferences = UserPreferences.getInstance(context.dataStore)
+        return ScheduleRepository.getInstance(service, preferences)
     }
 }

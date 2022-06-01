@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/nav_placeholder"
         app:itemIconTint="@color/icon_color"
-        app:itemRippleColor="@color/white"
+        app:itemRippleColor="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
