@@ -57,9 +57,13 @@ class ViewModelFactory private constructor(
 
             return checkupInstance as ViewModelFactory
         }
-        fun getInstance(context: Context) : ViewModelFactory =
-            instance ?: synchronized(this) {
-                instance ?: ViewModelFactory(Injection.provideSchedule(context))
-            }.also { instance = it }
+
+        @Volatile
+        private var scheduleInstance: ViewModelFactory? = null
+
+        fun getScheduleInstance(context: Context) : ViewModelFactory =
+            scheduleInstance ?: synchronized(this) {
+                scheduleInstance ?: ViewModelFactory(Injection.provideSchedule(context))
+            }.also { scheduleInstance = it }
     }
 }
