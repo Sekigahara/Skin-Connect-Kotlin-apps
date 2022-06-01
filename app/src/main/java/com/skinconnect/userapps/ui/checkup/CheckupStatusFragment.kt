@@ -21,6 +21,8 @@ import com.skinconnect.userapps.ui.helper.ViewModelFactory
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CheckupStatusFragment : BaseFragment() {
     private lateinit var noButton: Button
@@ -31,6 +33,10 @@ class CheckupStatusFragment : BaseFragment() {
     private lateinit var textView: TextView
     private lateinit var progressBar: ProgressBar
     private lateinit var file: File
+    private val filenameFormat = "dd-MMM-yyyy"
+
+    private val timeStamp =
+        SimpleDateFormat(filenameFormat, Locale.US).format(System.currentTimeMillis())
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,11 +55,22 @@ class CheckupStatusFragment : BaseFragment() {
     }
 
     override fun setupView() {
-        val photoFile = CheckupStatusFragmentArgs.fromBundle(arguments as Bundle).photoFile
         val binding = binding as FragmentCheckupStatusBinding
-        file = photoFile.file
-        var bitmap = BitmapFactory.decodeFile(file.path)
+
+        // Manipulate image file
+        val photoFile = CheckupStatusFragmentArgs.fromBundle(arguments as Bundle).photoFile
+        var bitmap = BitmapFactory.decodeFile(photoFile.file.path)
         bitmap = rotateBitmap(bitmap, photoFile.isBackCamera)
+        val filename = "$timeStamp.jpg"
+        file = File(requireContext().cacheDir, filename)
+        file.createNewFile()
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, byteArrayOutputStream)
+        val bitmapData = byteArrayOutputStream.toByteArray()
+        val fileOutputStream = FileOutputStream(file)
+        fileOutputStream.write(bitmapData)
+
+        // Bind views
         binding.imageViewPhotoResult.setImageBitmap(bitmap)
         noButton = binding.buttonBackToCamera
         yesButton = binding.buttonUploadPhoto
