@@ -80,4 +80,6 @@
     <string name="back_to_home">Back to Home</string>
     <string name="refresh">Refresh</string>
     <string name="upload_photo">Upload photo?</string>
+    <string name="uploading">Uploading photo</string>
+    <string name="something_went_wrong">Something went wrong</string>
 </resources>

@@ -39,6 +39,9 @@
         <meta-data
             android:name="BASE_URL"
             android:value="${BASE_URL}" />
+        <meta-data
+            android:name="BASE_URL_ML"
+            android:value="${BASE_URL_ML}" />
 
         <activity
             android:name=".ui.SplashActivity"

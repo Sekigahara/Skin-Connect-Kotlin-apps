@@ -8,6 +8,7 @@ plugins {
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
     id "androidx.navigation.safeargs"
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 def keyProperties = new Properties()
@@ -26,7 +27,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        manifestPlaceholders = [BASE_URL: keyProperties['baseUrl']]
+        manifestPlaceholders = [BASE_URL: keyProperties['baseUrl'], BASE_URL_ML: keyProperties['baseUrlMl']]
     }
 
     buildTypes {
@@ -51,7 +52,7 @@ android {
 
     namespace 'com.skinconnect.userapps'
 
-    buildFeatures{
+    buildFeatures {
         viewBinding true
         compose true
     }
@@ -172,6 +173,10 @@ dependencies {
     implementation 'androidx.room:room-runtime:2.4.2'
     kapt 'androidx.room:room-compiler:2.4.2'
 
+    // Firebase
+    implementation platform('com.google.firebase:firebase-bom:30.0.2')
+    implementation 'com.google.firebase:firebase-storage-ktx'
+
     testImplementation 'junit:junit:4.13.2'
 
     // Mockito
@@ -180,7 +185,8 @@ dependencies {
 
     //special testing
     testImplementation "androidx.arch.core:core-testing:2.1.0" // InstantTaskExecutorRule
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2" //TestCoroutineDispatcher
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2"
+    //TestCoroutineDispatcher
     debugImplementation "androidx.fragment:fragment-testing:1.4.1" //launchFragmentInContainer
 
     //mock web server

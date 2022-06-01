@@ -5,10 +5,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.skinconnect.userapps.data.repository.AuthRepository
 import com.skinconnect.userapps.data.repository.BaseRepository
+import com.skinconnect.userapps.data.repository.CheckupRepository
 import com.skinconnect.userapps.di.Injection
 import com.skinconnect.userapps.ui.auth.LoginViewModel
 import com.skinconnect.userapps.ui.auth.RegisterViewModel
 import com.skinconnect.userapps.ui.auth.SplashViewModel
+import com.skinconnect.userapps.ui.checkup.CheckupViewModel
 
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory private constructor(
@@ -21,6 +23,8 @@ class ViewModelFactory private constructor(
             return LoginViewModel(repository as AuthRepository) as T
         if (modelClass.isAssignableFrom(SplashViewModel::class.java))
             return SplashViewModel(repository as AuthRepository) as T
+        if (modelClass.isAssignableFrom(CheckupViewModel::class.java))
+            return CheckupViewModel(repository as CheckupRepository) as T
 
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }
@@ -36,6 +40,18 @@ class ViewModelFactory private constructor(
             }
 
             return authInstance as ViewModelFactory
+        }
+
+        @Volatile
+        private var checkupInstance: ViewModelFactory? = null
+
+        fun getCheckupInstance(context: Context): ViewModelFactory {
+            if (checkupInstance == null) {
+                val repository = Injection.provideCheckupInjection(context)
+                checkupInstance = ViewModelFactory(repository)
+            }
+
+            return checkupInstance as ViewModelFactory
         }
     }
 }
