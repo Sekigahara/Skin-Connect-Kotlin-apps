@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skinconnect.userapps.data.entity.response.ListScheduleItem
-import com.skinconnect.userapps.data.entity.response.ScheduleResponse
 import com.skinconnect.userapps.databinding.ItemScheduleBinding
 
 class ScheduleAdapter(private val listSchedule: ArrayList<ListScheduleItem>) : RecyclerView.Adapter<ScheduleAdapter.ListViewHolder>() {

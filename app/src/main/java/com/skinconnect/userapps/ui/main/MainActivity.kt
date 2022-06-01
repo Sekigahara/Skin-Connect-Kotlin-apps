@@ -7,6 +7,7 @@ import com.google.android.material.navigation.NavigationBarView
 import com.skinconnect.userapps.R
 import com.skinconnect.userapps.databinding.ActivityMainBinding
 import com.skinconnect.userapps.ui.helper.BaseActivity
+import com.skinconnect.userapps.ui.main.schedule.ScheduleFragment
 
 class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

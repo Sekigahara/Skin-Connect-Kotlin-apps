@@ -1,9 +1,7 @@
 package com.skinconnect.userapps.data.entity.response
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import com.skinconnect.userapps.data.entity.RegisterDetails
-import kotlinx.parcelize.Parcelize
 
 open class LoginResponse(
 	@field:SerializedName("token")

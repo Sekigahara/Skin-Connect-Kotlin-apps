@@ -9,9 +9,13 @@ import android.widget.Button
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
+import com.skinconnect.userapps.R
+import com.skinconnect.userapps.data.repository.BaseRepository
 import com.skinconnect.userapps.data.repository.Result
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -59,7 +63,8 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     private fun showError(button: Button, progressBar: ProgressBar, message: String) {
         finishLoading(button, progressBar)
-        Snackbar.make(binding.root, "Something went wrong. $message", Snackbar.LENGTH_SHORT).show()
+        val errorPrefix = resources.getString(R.string.something_went_wrong)
+        Snackbar.make(binding.root, "$errorPrefix. $message", Snackbar.LENGTH_SHORT).show()
     }
 
     private fun finishLoading(button: Button, progressBar: ProgressBar) {
@@ -115,8 +120,14 @@ object FormValidator {
     fun validatePassword(password: String) =
         password.trim().isNotEmpty() && password.trim().length >= 6
 }
+
 fun String.withDateFormat(): String {
     val patternSource = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
     val date = patternSource.parse(this) as Date
     return DateFormat.getDateInstance(DateFormat.DEFAULT).format(date)
+}
+
+open class BaseViewModel(protected open val repository: BaseRepository) : ViewModel() {
+    protected val mutableResult = MutableLiveData<Result>()
+    val result : LiveData<Result> = mutableResult
 }

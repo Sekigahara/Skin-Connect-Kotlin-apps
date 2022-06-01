@@ -5,7 +5,6 @@ import com.skinconnect.userapps.data.entity.RegisterRequest
 import com.skinconnect.userapps.data.entity.response.LoginResponse
 import com.skinconnect.userapps.data.entity.response.RegisterResponse
 import com.skinconnect.userapps.data.entity.response.ScheduleResponse
-import com.skinconnect.userapps.data.entity.response.UserResponse
 import retrofit2.http.*
 
 interface ApiService {
