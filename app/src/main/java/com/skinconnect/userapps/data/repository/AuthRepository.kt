@@ -31,6 +31,10 @@ class AuthRepository private constructor(
 
     suspend fun saveUserToken(token: String) = preferences.saveUserToken(token)
 
+    fun getUserId() = preferences.getUserId()
+
+    suspend fun saveUserId(id: String) = preferences.saveUserId(id)
+
     companion object {
         @Volatile
         private var instance: AuthRepository? = null

@@ -4,22 +4,26 @@ import com.google.gson.annotations.SerializedName
 import com.skinconnect.userapps.data.entity.RegisterDetails
 
 open class LoginResponse(
+	@field:SerializedName("user_id")
+	val userId: String,
+
 	@field:SerializedName("token")
 	val token: String,
 
 	message: String,
-
 	status: String,
 ) : BaseResponse(message, status)
 
 class RegisterResponse(
 	status: String,
 	message: String,
-	token: String,
+
+	@field:SerializedName("token")
+	val token: String,
 
 	@field:SerializedName("data")
 	val data: RegisterDataResponse
-) : LoginResponse(token, message, status)
+) : BaseResponse(message, status)
 
 data class RegisterDataResponse(
 	@field:SerializedName("user")

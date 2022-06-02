@@ -56,7 +56,9 @@ class ProfileFragment : BaseFragment() {
                 .setPositiveButton(R.string.yes) { dialog, which ->
                     Log.e("TAG", "YESSS")
                     dialog.dismiss()
-                    (viewModel as AuthViewModel).saveUserToken("")
+                    val viewModel = viewModel as AuthViewModel
+                    viewModel.saveUserToken("")
+                    viewModel.saveUserId("")
                     val intent = Intent(requireContext(), AuthActivity::class.java)
                     startActivity(intent)
                     requireActivity().finish()
