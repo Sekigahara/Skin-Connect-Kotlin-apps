@@ -16,14 +16,14 @@ import com.skinconnect.userapps.data.entity.LoginRequest
 import com.skinconnect.userapps.data.entity.response.LoginResponse
 import com.skinconnect.userapps.data.repository.Result
 import com.skinconnect.userapps.databinding.FragmentLoginBinding
-import com.skinconnect.userapps.ui.main.MainActivity
+import com.skinconnect.userapps.ui.auth.AuthFragment
 import com.skinconnect.userapps.ui.auth.LoginViewModel
-import com.skinconnect.userapps.ui.helper.BaseFragment
 import com.skinconnect.userapps.ui.helper.FormValidator
 import com.skinconnect.userapps.ui.helper.ViewHelper
 import com.skinconnect.userapps.ui.helper.ViewModelFactory
+import com.skinconnect.userapps.ui.main.MainActivity
 
-class LoginFragment : BaseFragment() {
+class LoginFragment : AuthFragment() {
     private lateinit var emailEditText: EmailEditText
     private lateinit var passwordEditText: PasswordEditText
     private lateinit var loginButton: Button
@@ -64,6 +64,7 @@ class LoginFragment : BaseFragment() {
                 val response = it as Result.Success<*>
                 val data = response.data as LoginResponse
                 viewModel.saveUserToken(data.token)
+                viewModel.saveUserId(data.userId)
                 val intent = Intent(requireContext(), MainActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish()
