@@ -55,40 +55,6 @@ abstract class BaseFragment : Fragment(), BaseView {
         super.onDestroy()
         viewBinding = null
     }
-
-    private fun showLoading(button: Button, progressBar: ProgressBar) {
-        button.isEnabled = false
-        progressBar.visibility = View.VISIBLE
-    }
-
-    private fun showError(button: Button, progressBar: ProgressBar, message: String) {
-        finishLoading(button, progressBar)
-        val errorPrefix = resources.getString(R.string.something_went_wrong)
-        Snackbar.make(binding.root, "$errorPrefix. $message", Snackbar.LENGTH_SHORT).show()
-    }
-
-    private fun finishLoading(button: Button, progressBar: ProgressBar) {
-        button.isEnabled = true
-        progressBar.visibility = View.GONE
-    }
-
-    protected fun observeResultLiveData(
-        result: Result?,
-        button: Button,
-        progressBar: ProgressBar,
-        callback: () -> Unit,
-    ) {
-        if (result == null) return
-
-        when (result) {
-            is Result.Loading -> showLoading(button, progressBar)
-            is Result.Error -> showError(button, progressBar, result.error)
-            is Result.Success<*> -> {
-                finishLoading(button, progressBar)
-                callback()
-            }
-        }
-    }
 }
 
 object ViewHelper {

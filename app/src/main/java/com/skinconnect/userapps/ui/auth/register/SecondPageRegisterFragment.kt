@@ -15,7 +15,10 @@ import com.skinconnect.userapps.customview.EmailEditText
 import com.skinconnect.userapps.customview.PasswordEditText
 import com.skinconnect.userapps.data.entity.RegisterDetails
 import com.skinconnect.userapps.data.entity.RegisterRequest
+import com.skinconnect.userapps.data.entity.response.RegisterResponse
+import com.skinconnect.userapps.data.repository.Result
 import com.skinconnect.userapps.databinding.FragmentSignUp2Binding
+import com.skinconnect.userapps.ui.auth.AuthFragment
 import com.skinconnect.userapps.ui.main.MainActivity
 import com.skinconnect.userapps.ui.auth.RegisterViewModel
 import com.skinconnect.userapps.ui.helper.BaseFragment
@@ -23,7 +26,7 @@ import com.skinconnect.userapps.ui.helper.FormValidator
 import com.skinconnect.userapps.ui.helper.ViewHelper
 import com.skinconnect.userapps.ui.helper.ViewModelFactory
 
-class SecondPageRegisterFragment : BaseFragment() {
+class SecondPageRegisterFragment : AuthFragment() {
     private lateinit var registerDetailRequest: RegisterDetails
     private lateinit var usernameEditText: EditText
     private lateinit var emailEditText: EmailEditText
@@ -91,6 +94,9 @@ class SecondPageRegisterFragment : BaseFragment() {
 
         viewModel.result.observe(requireActivity()) {
             observeResultLiveData(it, registerButton, registerProgressBar) {
+                val data = (it as Result.Success<*>).data as RegisterResponse
+                viewModel.saveUserId(data.data.data.id)
+                viewModel.saveUserToken(data.token)
                 val intent = Intent(requireContext(), MainActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish()
