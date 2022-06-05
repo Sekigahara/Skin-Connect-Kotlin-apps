@@ -21,7 +21,8 @@ object Injection {
 
     fun provideCheckupInjection(context: Context): CheckupRepository {
         val service = ApiConfig.getApiService(context)
-        return CheckupRepository.getInstance(service)
+        val mlService = ApiConfig.getApiService(context, true)
+        return CheckupRepository.getInstance(service, mlService)
     }
     fun provideSchedule(context : Context): ScheduleRepository{
         val service = ApiConfig.getApiService(context)
