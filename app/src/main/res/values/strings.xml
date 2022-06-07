@@ -6,7 +6,7 @@
     <string name="create_account">Create your Account</string>
     <string name="log_into">Log into your account</string>
     <string name="what_are">What are you looking for?</string>
-    <string name="find_doctor">Find your doctor</string>
+    <string name="find_your_doctor">Find your doctor</string>
     <string name="find_clinic">Find Clinic</string>
     <string name="how_are">How are you feeling today?</string>
     <string name="your_doctors">Your doctors</string>
@@ -79,8 +79,16 @@
     <string name="no">No</string>
     <string name="back_to_home">Back to Home</string>
     <string name="refresh">Refresh</string>
-    <string name="upload_photo">Upload photo?</string>
+    <string name="classify_photo">Classify photo?</string>
     <string name="uploading">Uploading photo</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="retry">Retry</string>
+    <string name="find_doctor">Find doctor?</string>
+    <string name="classifying">Classifying</string>
+    <string name="disease_not_detected">Disease not detected. You are safe.</string>
+    <string name="disease_detected">Disease detected.</string>
+    <string name="disease_name">Disease name</string>
+    <string name="confidence">Confidence</string>
+    <string name="uploading_photo_to_database">Uploading photo to database</string>
+    <string name="finding_doctor">Finding doctor</string>
 </resources>

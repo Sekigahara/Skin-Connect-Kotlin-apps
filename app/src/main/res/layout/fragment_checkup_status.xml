@@ -12,7 +12,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@+id/textViewScanStatus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,14 +30,14 @@
         android:textAlignment="center"
         android:textColor="@color/purple_btn"
         android:textSize="20sp"
-        android:text="@string/upload_photo"
+        android:text="@string/classify_photo"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/buttonBackToHome"
+        android:id="@+id/buttonBackToHomeSafe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="72dp"
@@ -53,14 +53,14 @@
         android:id="@+id/buttonFindDoctor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="48dp"
         android:backgroundTint="@color/purple_btn"
         android:text="@string/find_doctors"
         android:textColor="@color/white"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/buttonBackToHomeDanger" />
 
     <Button
         android:id="@+id/buttonRefresh"
@@ -80,17 +80,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="607dp" />
+        app:layout_constraintGuide_begin="635dp" />
 
     <ProgressBar
         android:id="@+id/progressBarCheckupStatus"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+        app:layout_constraintTop_toBottomOf="@id/textViewScanStatus" />
 
     <Button
         android:id="@+id/buttonBackToCamera"
@@ -98,7 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="48dp"
         android:text="@string/no"
         android:textColor="@color/purple_btn"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -108,11 +109,26 @@
         tools:ignore="TextContrastCheck" />
 
     <Button
+        android:id="@+id/buttonBackToHomeDanger"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:text="@string/back_to_home"
+        android:textColor="@color/purple_btn"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintCircleRadius="70dp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonFindDoctor"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
         android:id="@+id/buttonUploadPhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="48dp"
         android:backgroundTint="@color/purple_btn"
         android:text="@string/yes"
         android:textColor="@color/white"

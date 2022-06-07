@@ -3,11 +3,14 @@ package com.skinconnect.userapps.ui.checkup
 import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.skinconnect.userapps.data.entity.ClassifyRequest
 import com.skinconnect.userapps.data.repository.CheckupRepository
 import com.skinconnect.userapps.data.repository.Result
 import com.skinconnect.userapps.databinding.ActivityCheckupBinding
 import com.skinconnect.userapps.ui.helper.BaseActivity
 import com.skinconnect.userapps.ui.helper.BaseViewModel
+import kotlinx.coroutines.launch
 import java.io.File
 
 class CheckupActivity : BaseActivity() {
@@ -23,8 +26,8 @@ class CheckupActivity : BaseActivity() {
 }
 
 class CheckupViewModel(override val repository: CheckupRepository) : BaseViewModel(repository) {
-    private val _checkDiseaseResult = MutableLiveData<Result>()
-    val checkDiseaseResult: LiveData<Result> = _checkDiseaseResult
+    private val _classifyImageResult = MutableLiveData<Result>()
+    val classifyImageResult: LiveData<Result> = _classifyImageResult
 
     private val _uploadToFirebaseResult = MutableLiveData<Result>()
     val uploadToFirebaseResult: LiveData<Result> = _uploadToFirebaseResult
@@ -32,16 +35,13 @@ class CheckupViewModel(override val repository: CheckupRepository) : BaseViewMod
     private val _findDoctorResult = MutableLiveData<Result>()
     val findDoctorResult: LiveData<Result> = _findDoctorResult
 
-    fun uploadImageToFirebase(
-        file: File,
-        onFailureAction: () -> Unit,
-        onSuccessAction: () -> Unit,
-    ) {
+    fun uploadImageToFirebase(file: File) {
         _uploadToFirebaseResult.value = Result.Loading
+        repository.uploadImageToFirebase(file, _uploadToFirebaseResult)
+    }
 
-        repository.uploadImageToFirebase(file,
-            onFailureAction,
-            onSuccessAction,
-            _uploadToFirebaseResult)
+    fun classifyImage(request: ClassifyRequest) {
+        _classifyImageResult.value = Result.Loading
+        viewModelScope.launch { repository.classifyImage(request, _classifyImageResult) }
     }
 }

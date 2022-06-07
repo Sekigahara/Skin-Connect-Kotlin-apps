@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import com.skinconnect.userapps.data.entity.ClassifyRequest
 import com.skinconnect.userapps.data.entity.response.BaseResponse
 import com.skinconnect.userapps.data.remote.ApiService
 import java.io.File
@@ -13,15 +14,12 @@ import java.util.*
 
 class CheckupRepository private constructor(
     service: ApiService,
-) : BaseRepository(service) {
+    private val mlService: ApiService,
+) :
+    BaseRepository(service) {
 
     @SuppressLint("SimpleDateFormat")
-    fun uploadImageToFirebase(
-        file: File,
-        onFailureAction: () -> Unit,
-        onSuccessAction: () -> Unit,
-        liveData: MutableLiveData<Result>,
-    ) {
+    fun uploadImageToFirebase(file: File, liveData: MutableLiveData<Result>) {
         val storage = Firebase.storage
         val storageReference = storage.reference
         val parentRef = storageReference.child("images")
@@ -34,12 +32,17 @@ class CheckupRepository private constructor(
 
         uploadTask.addOnFailureListener {
             catchError(it, liveData)
-            onFailureAction()
         }.addOnSuccessListener {
             val response = BaseResponse("success", "Image successfully uploaded.")
             liveData.value = Result.Success(response)
-            onSuccessAction()
         }
+    }
+
+    suspend fun classifyImage(request: ClassifyRequest, liveData: MutableLiveData<Result>) = try {
+        val response = mlService.classify(request.image)
+        processResponse(response, liveData)
+    } catch (exception: Exception) {
+        catchError(exception, liveData)
     }
 
 //    fun includesForUploadFiles() {
@@ -237,8 +240,9 @@ class CheckupRepository private constructor(
         @Volatile
         private var instance: CheckupRepository? = null
 
-        fun getInstance(service: ApiService) = instance ?: synchronized(this) {
-            instance ?: CheckupRepository(service)
-        }.also { instance = it }
+        fun getInstance(service: ApiService, mlService: ApiService) =
+            instance ?: synchronized(this) {
+                instance ?: CheckupRepository(service, mlService)
+            }.also { instance = it }
     }
 }
