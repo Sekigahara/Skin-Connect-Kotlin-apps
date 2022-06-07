@@ -8,6 +8,7 @@ import com.skinconnect.userapps.BuildConfig
 import com.skinconnect.userapps.data.remote.ApiService
 import com.skinconnect.userapps.data.entity.response.BaseResponse
 import retrofit2.HttpException
+import java.net.ConnectException
 import java.net.UnknownHostException
 
 sealed class Result private constructor() {
@@ -37,6 +38,8 @@ open class BaseRepository(protected val service: ApiService) {
                 liveData.value = Result.Error(response.message)
             }
             is UnknownHostException -> liveData.value =
+                Result.Error("Please check your internet connection and try again.")
+            is ConnectException -> liveData.value =
                 Result.Error("Please check your internet connection and try again.")
             else -> liveData.value = exception.message?.let {
                 if (BuildConfig.DEBUG) {
