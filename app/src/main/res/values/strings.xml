@@ -30,9 +30,9 @@
 
     //Component
     <string name="skip">Skip</string>
-    <string name="age">Your Age</string>
-    <string name="gender">Your Gender</string>
-    <string name="weight">Your Weight (Kg)</string>
+    <string name="your_age">Your Age</string>
+    <string name="your_gender">Your Gender</string>
+    <string name="your_weight">Your Weight (Kg)</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -92,4 +92,12 @@
     <string name="uploading_photo_to_database">Uploading photo to database</string>
     <string name="finding_doctor">Finding doctor</string>
     <string name="inputting_disease">Inputting disease</string>
+    <string name="doctor_s_profile">Doctor\'s Profile</string>
+    <string name="full_name">Full Name</string>
+    <string name="gender">Gender</string>
+    <string name="address">Address</string>
+    <string name="age">Age</string>
+    <string name="weight">Weight</string>
+    <string name="cancel_consultation">Cancel Consultation</string>
+    <string name="view_your_doctor_s_profile">View Your Doctor\'s Profile</string>
 </resources>

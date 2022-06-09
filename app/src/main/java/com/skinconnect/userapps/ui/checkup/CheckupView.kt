@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.skinconnect.userapps.data.entity.AddDiseaseRequest
 import com.skinconnect.userapps.data.entity.ClassifyRequest
+import com.skinconnect.userapps.data.entity.FindDoctorRequest
 import com.skinconnect.userapps.data.repository.CheckupRepository
 import com.skinconnect.userapps.data.repository.Result
 import com.skinconnect.userapps.databinding.ActivityCheckupBinding
@@ -52,5 +53,10 @@ class CheckupViewModel(override val repository: CheckupRepository) : BaseViewMod
     fun addDisease(id: String, token: String, request: AddDiseaseRequest) {
         _addDiseaseResult.value = Result.Loading
         viewModelScope.launch { repository.addDisease(id, token, request, _addDiseaseResult) }
+    }
+
+    fun findDoctor(userId: String, token: String, request: FindDoctorRequest) {
+        _findDoctorResult.value = Result.Loading
+        viewModelScope.launch { repository.findDoctor(userId, token, request, _findDoctorResult) }
     }
 }

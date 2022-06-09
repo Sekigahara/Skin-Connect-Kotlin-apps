@@ -1,13 +1,11 @@
 package com.skinconnect.userapps.data.remote
 
 import com.skinconnect.userapps.data.entity.AddDiseaseRequest
+import com.skinconnect.userapps.data.entity.FindDoctorRequest
 import com.skinconnect.userapps.data.entity.LoginRequest
 import com.skinconnect.userapps.data.entity.RegisterRequest
 import com.skinconnect.userapps.data.entity.response.*
-import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.http.*
 
 interface ApiService {
@@ -29,5 +27,12 @@ interface ApiService {
         @Path("id") id: String,
         @Header("Authorization") authorization: String,
         @Body request: AddDiseaseRequest,
-    ): BaseResponse
+    ): AddDiseaseResponse
+
+    @POST("users/{id}/findDoctor")
+    suspend fun findDoctor(
+        @Path("id") id: String,
+        @Header("Authorization") authorization: String,
+        @Body request: FindDoctorRequest,
+    ): FindDoctorResponse
 }

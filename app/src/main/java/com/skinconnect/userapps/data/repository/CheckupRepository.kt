@@ -6,6 +6,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.skinconnect.userapps.data.entity.AddDiseaseRequest
 import com.skinconnect.userapps.data.entity.ClassifyRequest
+import com.skinconnect.userapps.data.entity.FindDoctorRequest
 import com.skinconnect.userapps.data.entity.response.BaseResponse
 import com.skinconnect.userapps.data.remote.ApiService
 import java.io.File
@@ -33,7 +34,7 @@ class CheckupRepository private constructor(
         uploadTask.addOnFailureListener {
             catchError(it, liveData)
         }.addOnSuccessListener {
-            val response = BaseResponse("success", imageRef.path)
+            val response = BaseResponse(imageRef.path, "success")
             liveData.value = Result.Success(response)
         }
     }
@@ -52,6 +53,18 @@ class CheckupRepository private constructor(
         liveData: MutableLiveData<Result>,
     ) = try {
         val response = service.addDisease(id, "Bearer $token", request)
+        processResponse(response, liveData)
+    } catch (exception: Exception) {
+        catchError(exception, liveData)
+    }
+
+    suspend fun findDoctor(
+        id: String,
+        token: String,
+        request: FindDoctorRequest,
+        liveData: MutableLiveData<Result>,
+    ) = try {
+        val response = service.findDoctor(id, "Bearer $token", request)
         processResponse(response, liveData)
     } catch (exception: Exception) {
         catchError(exception, liveData)

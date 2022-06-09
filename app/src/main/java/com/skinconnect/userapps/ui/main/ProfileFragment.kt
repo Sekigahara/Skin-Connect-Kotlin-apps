@@ -35,6 +35,7 @@ class ProfileFragment : BaseFragment() {
     }
 
     override fun setupView() {
+        // TODO: If consult with doctor, add margin top of to do list text to 112dp
         val binding = binding as FragmentProfileBinding
         logoutButton = binding.fabLogout
     }

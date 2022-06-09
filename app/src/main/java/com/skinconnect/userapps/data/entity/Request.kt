@@ -30,3 +30,8 @@ data class AddDiseaseRequest(
     @field:SerializedName("disease_img")
     var diseaseImg: String
 )
+
+data class FindDoctorRequest(
+    @field:SerializedName("disease_id")
+    val diseaseId: String,
+)

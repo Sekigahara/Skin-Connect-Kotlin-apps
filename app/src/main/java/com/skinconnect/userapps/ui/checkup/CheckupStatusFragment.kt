@@ -1,5 +1,6 @@
 package com.skinconnect.userapps.ui.checkup
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
@@ -11,17 +12,22 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.google.android.material.snackbar.Snackbar
 import com.skinconnect.userapps.R
 import com.skinconnect.userapps.data.entity.AddDiseaseRequest
 import com.skinconnect.userapps.data.entity.ClassifyRequest
+import com.skinconnect.userapps.data.entity.FindDoctorRequest
+import com.skinconnect.userapps.data.entity.response.AddDiseaseResponse
 import com.skinconnect.userapps.data.entity.response.BaseResponse
 import com.skinconnect.userapps.data.entity.response.ClassifyResponse
+import com.skinconnect.userapps.data.entity.response.FindDoctorResponse
 import com.skinconnect.userapps.data.repository.Result
 import com.skinconnect.userapps.databinding.FragmentCheckupStatusBinding
 import com.skinconnect.userapps.ui.auth.AuthViewModel
+import com.skinconnect.userapps.ui.doctor.DoctorActivity
 import com.skinconnect.userapps.ui.helper.BaseFragment
 import com.skinconnect.userapps.ui.helper.ViewModelFactory
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -49,6 +55,8 @@ class CheckupStatusFragment : BaseFragment() {
     private var isUploadedToFirebase = false
     private var isDiseaseAdded = false
     private val filenameFormat = "dd-MMM-yyyy"
+    private var id = ""
+    private var token = ""
 
     private val timeStamp =
         SimpleDateFormat(filenameFormat, Locale.US).format(System.currentTimeMillis())
@@ -88,7 +96,7 @@ class CheckupStatusFragment : BaseFragment() {
         // Bind views
         binding.imageViewPhotoResult.setImageBitmap(bitmap)
         noButton = binding.buttonBackToCamera
-        yesButton = binding.buttonUploadPhoto
+        yesButton = binding.classifyImageButton
         textView = binding.textViewScanStatus
         progressBar = binding.progressBarCheckupStatus
         refreshButton = binding.buttonRefresh
@@ -120,6 +128,7 @@ class CheckupStatusFragment : BaseFragment() {
         viewModel.classifyImageResult.observe(requireActivity()) { observeClassifyImage(it) }
         viewModel.uploadToFirebaseResult.observe(requireActivity()) { observeUploadToFirebase(it) }
         viewModel.addDiseaseResult.observe(requireActivity()) { observeAddDisease(it) }
+        viewModel.findDoctorResult.observe(requireActivity()) { observeFindDoctor(it) }
     }
 
     private fun observeClassifyImage(result: Result?) {
@@ -202,8 +211,6 @@ class CheckupStatusFragment : BaseFragment() {
     }
 
     private fun addDisease() {
-        var id = ""
-        var token = ""
         val viewModel = viewModel as CheckupViewModel
 
         authViewModel.getUserId().observe(requireActivity()) {
@@ -230,11 +237,27 @@ class CheckupStatusFragment : BaseFragment() {
             is Result.Success<*> -> {
                 isDiseaseAdded = true
                 onResultSuccess(resources.getString(R.string.finding_doctor))
+                val data = result.data as AddDiseaseResponse
+                val request = FindDoctorRequest(data.data.diseaseId)
+                (viewModel as CheckupViewModel).findDoctor(id, token, request)
+            }
+        }
+    }
 
-                Snackbar.make(binding.root,
-                    "Success, ${(result.data as BaseResponse).message}",
-                    Snackbar.LENGTH_SHORT).show()
-                backToHomeSafeButton.visibility = View.VISIBLE
+    private fun observeFindDoctor(result: Result?) {
+        if (result == null) return
+
+        when (result) {
+            Result.Loading -> onResultLoading(resources.getString(R.string.finding_doctor))
+            is Result.Error -> onResultError(result)
+            is Result.Success<*> -> {
+                val data = result.data as FindDoctorResponse
+                onResultSuccess(data.message)
+                Toast.makeText(requireContext(), "You have found a doctor.", Toast.LENGTH_SHORT).show()
+                val intent = Intent(requireContext(), DoctorActivity::class.java)
+                intent.putExtra(DoctorActivity.EXTRA_DOCTOR, data.data.details)
+                startActivity(intent)
+                requireActivity().finish()
             }
         }
     }
