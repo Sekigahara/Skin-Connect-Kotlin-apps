@@ -49,12 +49,8 @@ class ProfileFragment : BaseFragment() {
         logoutButton.setOnClickListener {
             MaterialAlertDialogBuilder(requireContext()).setTitle(resources.getString(R.string.logout))
                 .setMessage(resources.getString(R.string.are_you_sure))
-                .setNegativeButton(resources.getString(R.string.no)) { dialog, which ->
-                    Log.e("TAG", "NOOO")
-                    dialog.dismiss()
-                }
-                .setPositiveButton(R.string.yes) { dialog, which ->
-                    Log.e("TAG", "YESSS")
+                .setNegativeButton(resources.getString(R.string.no)) { dialog, _ -> dialog.dismiss() }
+                .setPositiveButton(R.string.yes) { dialog, _ ->
                     dialog.dismiss()
                     val viewModel = viewModel as AuthViewModel
                     viewModel.saveUserToken("")

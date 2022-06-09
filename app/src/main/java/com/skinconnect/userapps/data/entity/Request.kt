@@ -1,5 +1,6 @@
 package com.skinconnect.userapps.data.entity
 
+import com.google.gson.annotations.SerializedName
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -18,4 +19,14 @@ class RegisterRequest(
 data class ClassifyRequest(
     val image: MultipartBody.Part,
     val description: String = "",
+)
+
+data class AddDiseaseRequest(
+    val confidence: Float,
+
+    @field:SerializedName("disease_name")
+    val diseaseName: String,
+
+    @field:SerializedName("disease_img")
+    var diseaseImg: String
 )
