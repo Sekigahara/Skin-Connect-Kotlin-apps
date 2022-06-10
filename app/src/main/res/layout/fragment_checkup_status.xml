@@ -104,7 +104,7 @@
         android:textColor="@color/purple_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintCircleRadius="70dp"
-        app:layout_constraintEnd_toStartOf="@+id/buttonUploadPhoto"
+        app:layout_constraintEnd_toStartOf="@+id/classifyImageButton"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="TextContrastCheck" />
 
@@ -124,7 +124,7 @@
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/buttonUploadPhoto"
+        android:id="@+id/classifyImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"

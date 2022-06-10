@@ -1,23 +1,33 @@
 package com.skinconnect.userapps.ui.checkup
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.google.android.material.snackbar.Snackbar
 import com.skinconnect.userapps.R
+import com.skinconnect.userapps.data.entity.AddDiseaseRequest
 import com.skinconnect.userapps.data.entity.ClassifyRequest
+import com.skinconnect.userapps.data.entity.FindDoctorRequest
+import com.skinconnect.userapps.data.entity.response.AddDiseaseResponse
+import com.skinconnect.userapps.data.entity.response.BaseResponse
 import com.skinconnect.userapps.data.entity.response.ClassifyResponse
+import com.skinconnect.userapps.data.entity.response.FindDoctorResponse
 import com.skinconnect.userapps.data.repository.Result
 import com.skinconnect.userapps.databinding.FragmentCheckupStatusBinding
+import com.skinconnect.userapps.ui.auth.AuthViewModel
+import com.skinconnect.userapps.ui.doctor.DoctorActivity
 import com.skinconnect.userapps.ui.helper.BaseFragment
 import com.skinconnect.userapps.ui.helper.ViewModelFactory
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -39,8 +49,14 @@ class CheckupStatusFragment : BaseFragment() {
     private lateinit var textView: TextView
     private lateinit var progressBar: ProgressBar
     private lateinit var file: File
+    private lateinit var authViewModel: AuthViewModel
+    private lateinit var addDiseaseRequest: AddDiseaseRequest
     private var isClassified = false
+    private var isUploadedToFirebase = false
+    private var isDiseaseAdded = false
     private val filenameFormat = "dd-MMM-yyyy"
+    private var id = ""
+    private var token = ""
 
     private val timeStamp =
         SimpleDateFormat(filenameFormat, Locale.US).format(System.currentTimeMillis())
@@ -80,38 +96,13 @@ class CheckupStatusFragment : BaseFragment() {
         // Bind views
         binding.imageViewPhotoResult.setImageBitmap(bitmap)
         noButton = binding.buttonBackToCamera
-        yesButton = binding.buttonUploadPhoto
+        yesButton = binding.classifyImageButton
         textView = binding.textViewScanStatus
         progressBar = binding.progressBarCheckupStatus
         refreshButton = binding.buttonRefresh
         backToHomeSafeButton = binding.buttonBackToHomeSafe
         findDoctorButton = binding.buttonFindDoctor
         backToHomeDangerButton = binding.buttonBackToHomeDanger
-    }
-
-    override fun setupViewModel() {
-        val factory = ViewModelFactory.getCheckupInstance(requireContext())
-        val viewModel: CheckupViewModel by viewModels { factory }
-        this.viewModel = viewModel
-
-        viewModel.uploadToFirebaseResult.observe(requireActivity()) { observeUploadToFirebase(it) }
-        viewModel.classifyImageResult.observe(requireActivity()) { observeClassifyImage(it) }
-    }
-
-    override fun setupAction() {
-        val toCameraFragment =
-            Navigation.createNavigateOnClickListener(R.id.action_checkupStatusFragment_to_cameraFragment)
-
-        noButton.setOnClickListener(toCameraFragment)
-        yesButton.setOnClickListener { yesButtonClassifyOnClicked() }
-        backToHomeSafeButton.setOnClickListener { requireActivity().finish() }
-        backToHomeDangerButton.setOnClickListener { requireActivity().finish() }
-        findDoctorButton.setOnClickListener { yesButtonUploadToFirebaseOnClicked() }
-
-        refreshButton.setOnClickListener {
-            if (isClassified) yesButtonUploadToFirebaseOnClicked()
-            else yesButtonClassifyOnClicked()
-        }
     }
 
     private fun rotateBitmap(bitmap: Bitmap, isBackCamera: Boolean = false): Bitmap {
@@ -125,6 +116,176 @@ class CheckupStatusFragment : BaseFragment() {
             matrix.postScale(-1f, 1f, bitmap.width / 2f, bitmap.height / 2f)
             Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
         }
+    }
+
+    override fun setupViewModel() {
+        val factory = ViewModelFactory.getCheckupInstance(requireContext())
+        val viewModel: CheckupViewModel by viewModels { factory }
+        this.viewModel = viewModel
+        val authFactory = ViewModelFactory.getAuthInstance(requireContext())
+        val authViewModel: AuthViewModel by viewModels { authFactory }
+        this.authViewModel = authViewModel
+        viewModel.classifyImageResult.observe(requireActivity()) { observeClassifyImage(it) }
+        viewModel.uploadToFirebaseResult.observe(requireActivity()) { observeUploadToFirebase(it) }
+        viewModel.addDiseaseResult.observe(requireActivity()) { observeAddDisease(it) }
+        viewModel.findDoctorResult.observe(requireActivity()) { observeFindDoctor(it) }
+    }
+
+    private fun observeClassifyImage(result: Result?) {
+        if (result == null) return
+
+        when (result) {
+            Result.Loading -> {
+                yesButton.visibility = View.GONE
+                noButton.visibility = View.GONE
+                onResultLoading(resources.getString(R.string.uploading))
+            }
+            is Result.Error -> onResultError(result)
+            is Result.Success<*> -> {
+                isClassified = true
+                val data = result.data as ClassifyResponse
+
+                if (data.isDanger) {
+                    backToHomeDangerButton.visibility = View.VISIBLE
+                    findDoctorButton.visibility = View.VISIBLE
+                    val disease = data.disease
+                    addDiseaseRequest =
+                        AddDiseaseRequest(disease.confidence, disease.diseaseName, "")
+                    val diseaseDetectedText = resources.getString(R.string.disease_detected)
+                    val findDoctorText = resources.getString(R.string.find_doctor)
+
+                    val diseaseText =
+                        "${resources.getString(R.string.disease_name)}: ${disease.diseaseName}"
+
+                    val confidenceText =
+                        "${resources.getString(R.string.confidence)}: ${disease.confidence}%"
+
+                    val text =
+                        "$diseaseDetectedText\n\n$diseaseText\n$confidenceText\n\n$findDoctorText"
+
+                    onResultSuccess(text)
+                } else {
+                    backToHomeSafeButton.visibility = View.VISIBLE
+                    onResultSuccess(resources.getString(R.string.disease_not_detected))
+                }
+            }
+        }
+    }
+
+    private fun onResultLoading(text: String) {
+        refreshButton.visibility = View.GONE
+        progressBar.visibility = View.VISIBLE
+        textView.text = text
+    }
+
+    private fun onResultError(result: Result.Error) {
+        progressBar.visibility = View.GONE
+        refreshButton.visibility = View.VISIBLE
+        val errorPrefix = resources.getString(R.string.something_went_wrong)
+        val text = "$errorPrefix. ${result.error}"
+        textView.text = text
+    }
+
+    private fun onResultSuccess(text: String) {
+        progressBar.visibility = View.GONE
+        textView.text = text
+    }
+
+    private fun observeUploadToFirebase(result: Result?) {
+        if (result == null) return
+
+        when (result) {
+            Result.Loading -> {
+                backToHomeDangerButton.visibility = View.GONE
+                findDoctorButton.visibility = View.GONE
+                onResultLoading(resources.getString(R.string.uploading))
+            }
+            is Result.Error -> onResultError(result)
+            is Result.Success<*> -> {
+                isUploadedToFirebase = true
+                onResultSuccess(resources.getString(R.string.inputting_disease))
+                addDiseaseRequest.diseaseImg = (result.data as BaseResponse).message
+                addDisease()
+            }
+        }
+    }
+
+    private fun addDisease() {
+        val viewModel = viewModel as CheckupViewModel
+
+        authViewModel.getUserId().observe(requireActivity()) {
+            id = it
+
+            if (token.isNotBlank() && token.isNotEmpty())
+                viewModel.addDisease(id, token, addDiseaseRequest)
+        }
+
+        authViewModel.getUserToken().observe(requireActivity()) {
+            token = it
+
+            if (id.isNotBlank() && id.isNotEmpty())
+                viewModel.addDisease(id, token, addDiseaseRequest)
+        }
+    }
+
+    private fun observeAddDisease(result: Result?) {
+        if (result == null) return
+
+        when (result) {
+            Result.Loading -> onResultLoading(resources.getString(R.string.inputting_disease))
+            is Result.Error -> onResultError(result)
+            is Result.Success<*> -> {
+                isDiseaseAdded = true
+                onResultSuccess(resources.getString(R.string.finding_doctor))
+                val data = result.data as AddDiseaseResponse
+                val request = FindDoctorRequest(data.data.diseaseId)
+                (viewModel as CheckupViewModel).findDoctor(id, token, request)
+            }
+        }
+    }
+
+    private fun observeFindDoctor(result: Result?) {
+        if (result == null) return
+
+        when (result) {
+            Result.Loading -> onResultLoading(resources.getString(R.string.finding_doctor))
+            is Result.Error -> onResultError(result)
+            is Result.Success<*> -> {
+                val data = result.data as FindDoctorResponse
+                onResultSuccess(data.message)
+                Toast.makeText(requireContext(), "You have found a doctor.", Toast.LENGTH_SHORT).show()
+                val intent = Intent(requireContext(), DoctorActivity::class.java)
+                intent.putExtra(DoctorActivity.EXTRA_DOCTOR, data.data.details)
+                startActivity(intent)
+                requireActivity().finish()
+            }
+        }
+    }
+
+    override fun setupAction() {
+        val toCameraFragment =
+            Navigation.createNavigateOnClickListener(R.id.action_checkupStatusFragment_to_cameraFragment)
+
+        noButton.setOnClickListener(toCameraFragment)
+        yesButton.setOnClickListener { yesButtonClassifyOnClicked() }
+        backToHomeSafeButton.setOnClickListener { requireActivity().finish() }
+        backToHomeDangerButton.setOnClickListener { requireActivity().finish() }
+        val viewModel = viewModel as CheckupViewModel
+        findDoctorButton.setOnClickListener { viewModel.uploadImageToFirebase(file) }
+
+        refreshButton.setOnClickListener {
+            if (!isClassified) yesButtonClassifyOnClicked()
+            else if (!isUploadedToFirebase) viewModel.uploadImageToFirebase(file)
+            else addDisease()
+        }
+    }
+
+    private fun yesButtonClassifyOnClicked() {
+        file = reduceFileImage(file)
+        val requestFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+        val imageMultipart = MultipartBody.Part.createFormData("image", file.name, requestFile)
+        val request = ClassifyRequest(imageMultipart)
+        (viewModel as CheckupViewModel).classifyImage(request)
     }
 
     private fun reduceFileImage(file: File): File {
@@ -142,90 +303,5 @@ class CheckupStatusFragment : BaseFragment() {
 
         bitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, FileOutputStream(file))
         return file
-    }
-
-    private fun yesButtonUploadToFirebaseOnClicked() {
-        (viewModel as CheckupViewModel).uploadImageToFirebase(file)
-    }
-
-    private fun observeUploadToFirebase(result: Result?) {
-        if (result == null) return
-
-        when (result) {
-            Result.Loading -> {
-                backToHomeDangerButton.visibility = View.GONE
-                findDoctorButton.visibility = View.GONE
-                refreshButton.visibility = View.GONE
-                progressBar.visibility = View.VISIBLE
-                textView.text = resources.getString(R.string.uploading)
-            }
-            is Result.Error -> {
-                progressBar.visibility = View.GONE
-                refreshButton.visibility = View.VISIBLE
-                val errorPrefix = resources.getString(R.string.something_went_wrong)
-                val text = "$errorPrefix. ${result.error}"
-                textView.text = text
-            }
-            is Result.Success<*> -> {
-                progressBar.visibility = View.GONE
-                Snackbar.make(binding.root, "Success", Snackbar.LENGTH_SHORT).show()
-                backToHomeSafeButton.visibility = View.VISIBLE
-            }
-        }
-    }
-
-    private fun yesButtonClassifyOnClicked() {
-        file = reduceFileImage(file)
-        val requestFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
-        val imageMultipart = MultipartBody.Part.createFormData("image", file.name, requestFile)
-        val request = ClassifyRequest(imageMultipart)
-        (viewModel as CheckupViewModel).classifyImage(request)
-    }
-
-    private fun observeClassifyImage(result: Result?) {
-        if (result == null) return
-
-        when (result) {
-            Result.Loading -> {
-                yesButton.visibility = View.GONE
-                noButton.visibility = View.GONE
-                refreshButton.visibility = View.GONE
-                progressBar.visibility = View.VISIBLE
-                textView.text = resources.getString(R.string.uploading)
-            }
-            is Result.Error -> {
-                progressBar.visibility = View.GONE
-                refreshButton.visibility = View.VISIBLE
-                val errorPrefix = resources.getString(R.string.something_went_wrong)
-                val text = "$errorPrefix. ${result.error}"
-                textView.text = text
-            }
-            is Result.Success<*> -> {
-                progressBar.visibility = View.GONE
-                val data = result.data as ClassifyResponse
-
-                if (data.isDanger) {
-                    backToHomeDangerButton.visibility = View.VISIBLE
-                    findDoctorButton.visibility = View.VISIBLE
-                    val diseaseDetectedText = resources.getString(R.string.disease_detected)
-
-                    val diseaseText =
-                        "${resources.getString(R.string.disease_name)}: ${data.disease.diseaseName}"
-
-                    val confidenceText =
-                        "${resources.getString(R.string.confidence)}: ${data.disease.confidence}%"
-
-                    val findDoctorText = resources.getString(R.string.find_doctor)
-
-                    val text =
-                        "$diseaseDetectedText\n\n$diseaseText\n$confidenceText\n\n$findDoctorText"
-
-                    textView.text = text
-                } else {
-                    backToHomeSafeButton.visibility = View.VISIBLE
-                    textView.text = resources.getString(R.string.disease_not_detected)
-                }
-            }
-        }
     }
 }

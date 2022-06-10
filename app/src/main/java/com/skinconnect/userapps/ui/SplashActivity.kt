@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.skinconnect.userapps.ui.auth.AuthActivity
-import com.skinconnect.userapps.ui.auth.SplashViewModel
+import com.skinconnect.userapps.ui.auth.AuthViewModel
 import com.skinconnect.userapps.ui.helper.BaseView
 import com.skinconnect.userapps.ui.helper.ViewModelFactory
 import com.skinconnect.userapps.ui.main.MainActivity
@@ -18,7 +18,7 @@ import kotlinx.coroutines.withContext
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity(), BaseView {
-    private lateinit var viewModel: SplashViewModel
+    private lateinit var viewModel: AuthViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +28,7 @@ class SplashActivity : AppCompatActivity(), BaseView {
 
     override fun setupViewModel() {
         val factory = ViewModelFactory.getAuthInstance(this)
-        val viewModel: SplashViewModel by viewModels { factory }
+        val viewModel: AuthViewModel by viewModels { factory }
         this.viewModel = viewModel
     }
 

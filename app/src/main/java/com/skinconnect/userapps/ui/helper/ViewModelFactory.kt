@@ -8,9 +8,9 @@ import com.skinconnect.userapps.data.repository.BaseRepository
 import com.skinconnect.userapps.data.repository.CheckupRepository
 import com.skinconnect.userapps.data.repository.ScheduleRepository
 import com.skinconnect.userapps.di.Injection
+import com.skinconnect.userapps.ui.auth.AuthViewModel
 import com.skinconnect.userapps.ui.auth.LoginViewModel
 import com.skinconnect.userapps.ui.auth.RegisterViewModel
-import com.skinconnect.userapps.ui.auth.SplashViewModel
 import com.skinconnect.userapps.ui.checkup.CheckupViewModel
 import com.skinconnect.userapps.ui.main.schedule.ScheduleViewModel
 
@@ -23,8 +23,8 @@ class ViewModelFactory private constructor(
             return RegisterViewModel(repository as AuthRepository) as T
         if (modelClass.isAssignableFrom(LoginViewModel::class.java))
             return LoginViewModel(repository as AuthRepository) as T
-        if (modelClass.isAssignableFrom(SplashViewModel::class.java))
-            return SplashViewModel(repository as AuthRepository) as T
+        if (modelClass.isAssignableFrom(AuthViewModel::class.java))
+            return AuthViewModel(repository as AuthRepository) as T
         if (modelClass.isAssignableFrom(CheckupViewModel::class.java))
             return CheckupViewModel(repository as CheckupRepository) as T
         if (modelClass.isAssignableFrom(ScheduleViewModel::class.java))
