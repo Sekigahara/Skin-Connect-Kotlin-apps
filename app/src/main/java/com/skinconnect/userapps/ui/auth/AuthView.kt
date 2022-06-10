@@ -19,10 +19,9 @@ import kotlinx.coroutines.launch
 
 open class AuthViewModel(override val repository: AuthRepository) : BaseViewModel(repository) {
     fun saveUserToken(token: String) = viewModelScope.launch { repository.saveUserToken(token) }
-
     fun saveUserId(id: String) = viewModelScope.launch { repository.saveUserId(id) }
-
     fun getUserId() = repository.getUserId().asLiveData()
+    fun getUserToken() = repository.getUserToken().asLiveData()
 }
 
 class LoginViewModel(repository: AuthRepository) : AuthViewModel(repository) {
@@ -37,10 +36,6 @@ class RegisterViewModel(repository: AuthRepository) : AuthViewModel(repository) 
         mutableResult.value = Result.Loading
         repository.register(request, mutableResult)
     }
-}
-
-class SplashViewModel(repository: AuthRepository) : AuthViewModel(repository) {
-    fun getUserToken() = repository.getUserToken().asLiveData()
 }
 
 class AuthActivity : BaseActivity() {

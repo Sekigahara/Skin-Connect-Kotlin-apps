@@ -24,6 +24,7 @@ object Injection {
         val mlService = ApiConfig.getApiService(context, true)
         return CheckupRepository.getInstance(service, mlService)
     }
+
     fun provideSchedule(context : Context): ScheduleRepository{
         val service = ApiConfig.getApiService(context)
         val preferences = UserPreferences.getInstance(context.dataStore)
