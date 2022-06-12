@@ -15,6 +15,9 @@ data class RegisterDetails(
 
     @field:SerializedName("weight")
     val weight: String,
+
+    @field:SerializedName("full_name")
+    var fullName: String = "",
 ) : Parcelable
 
 @Parcelize
