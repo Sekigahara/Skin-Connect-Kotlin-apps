@@ -55,7 +55,11 @@ class ProfileFragment : BaseFragment() {
         this.viewModel = viewModel
 
         viewModel.getUserToken()
-            .observe(requireActivity()) { if (!isFinishedGettingProfile) viewModel.getProfile(it) }
+            .observe(requireActivity()) {
+                if (isFinishedGettingProfile) return@observe
+
+                viewModel.getProfile(it)
+            }
 
         viewModel.result.observe(requireActivity()) { observeGetProfile(it) }
     }
@@ -135,6 +139,7 @@ class ProfileFragment : BaseFragment() {
                 .setMessage(resources.getString(R.string.are_you_sure))
                 .setNegativeButton(resources.getString(R.string.no)) { dialog, _ -> dialog.dismiss() }
                 .setPositiveButton(R.string.yes) { dialog, _ ->
+                    isFinishedGettingProfile = true
                     dialog.dismiss()
                     val viewModel = viewModel as AuthViewModel
                     viewModel.saveUserToken("")
