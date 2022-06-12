@@ -38,6 +38,13 @@ class RegisterViewModel(repository: AuthRepository) : AuthViewModel(repository) 
     }
 }
 
+class ProfileViewModel(repository: AuthRepository) : AuthViewModel(repository) {
+    fun getProfile(token: String) = viewModelScope.launch {
+        mutableResult.value = Result.Loading
+        repository.getProfile(token, mutableResult)
+    }
+}
+
 class AuthActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

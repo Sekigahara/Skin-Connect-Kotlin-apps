@@ -16,13 +16,16 @@ class DoctorActivity : BaseActivity() {
     override fun setupView() {
         supportActionBar?.hide()
         val doctor =
-            intent.getParcelableExtra<DoctorDetailsResponse>(EXTRA_DOCTOR) as DoctorDetailsResponse
+            intent.getParcelableExtra<DoctorDetailsResponse>(EXTRA_DOCTOR)
         val binding = binding as ActivityDoctorBinding
-        binding.doctorFullNameTextView.text = doctor.fullName
-        binding.doctorGenderTextView.text = doctor.gender
-        binding.addressTextView.text = doctor.address
-        binding.doctorAgeTextView.text = "${doctor.age}"
-        binding.doctorWeightTextView.text = "${doctor.weight}"
+
+        if (doctor != null) {
+            binding.doctorFullNameTextView.text = doctor.fullName
+            binding.doctorGenderTextView.text = doctor.gender
+            binding.addressTextView.text = doctor.address
+            binding.doctorAgeTextView.text = "${doctor.age}"
+            binding.doctorWeightTextView.text = "${doctor.weight}"
+        }
     }
 
     private fun setupAction() {

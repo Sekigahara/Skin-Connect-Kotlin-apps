@@ -35,4 +35,7 @@ interface ApiService {
         @Header("Authorization") authorization: String,
         @Body request: FindDoctorRequest,
     ): FindDoctorResponse
+
+    @GET("users/profile")
+    suspend fun getProfile(@Header("Authorization") authorization: String): ProfileResponse
 }
