@@ -41,10 +41,10 @@ class FindDoctorResponse(
     message: String,
 
     @field:SerializedName("data")
-    val data: DoctorDataResponse
+    val data: FindDoctorDataResponse
 ) : BaseResponse(message, status)
 
-data class DoctorDataResponse(
+data class FindDoctorDataResponse(
     @field:SerializedName("doctor_id")
     val doctorId: String,
 

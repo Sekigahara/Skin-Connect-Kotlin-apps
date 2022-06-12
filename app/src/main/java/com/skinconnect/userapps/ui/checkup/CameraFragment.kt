@@ -73,11 +73,6 @@ class CameraFragment : BaseFragment() {
             ContextCompat.getMainExecutor(requireContext()),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-//                    val intent = Intent()
-//                    intent.putExtra("picture", photoFile)
-//                    intent.putExtra("isBackCamera", cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA)
-//                    setResult(AddStoryFragment.CAMERA_X_RESULT, intent)
-//                    finish()
                     val photoFile =
                         PhotoFile(file, cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA)
 

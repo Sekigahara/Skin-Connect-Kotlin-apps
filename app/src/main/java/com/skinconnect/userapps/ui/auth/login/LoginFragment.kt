@@ -2,6 +2,7 @@ package com.skinconnect.userapps.ui.auth.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.Button
 import android.widget.ProgressBar
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import com.skinconnect.userapps.BuildConfig
 import com.skinconnect.userapps.R
 import com.skinconnect.userapps.customview.EmailEditText
 import com.skinconnect.userapps.customview.PasswordEditText
@@ -65,6 +67,12 @@ class LoginFragment : AuthFragment() {
                 val data = response.data as LoginResponse
                 viewModel.saveUserToken(data.token)
                 viewModel.saveUserId(data.userId)
+
+                if (BuildConfig.DEBUG) {
+                    Log.e("SplashActivity", "USER TOKEN: ${data.token}")
+                    Log.e("SplashActivity", "USER ID: ${data.userId}")
+                }
+
                 val intent = Intent(requireContext(), MainActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish()

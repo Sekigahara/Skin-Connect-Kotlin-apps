@@ -35,6 +35,20 @@ class AuthRepository private constructor(
 
     suspend fun saveUserId(id: String) = preferences.saveUserId(id)
 
+    suspend fun getProfile(token: String, liveData: MutableLiveData<Result>) = try {
+        val response = service.getProfile("Bearer $token")
+        processResponse(response, liveData)
+    } catch (exception: Exception) {
+        catchError(exception, liveData)
+    }
+
+    suspend fun getDoctor(id: String, token: String, liveData: MutableLiveData<Result>) = try {
+        val response = service.getDoctor(id, "Bearer $token")
+        processResponse(response, liveData)
+    } catch (exception: Exception) {
+        catchError(exception, liveData)
+    }
+
     companion object {
         @Volatile
         private var instance: AuthRepository? = null

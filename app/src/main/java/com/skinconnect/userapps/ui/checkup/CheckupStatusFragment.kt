@@ -5,7 +5,6 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import com.google.android.material.snackbar.Snackbar
 import com.skinconnect.userapps.R
 import com.skinconnect.userapps.data.entity.AddDiseaseRequest
 import com.skinconnect.userapps.data.entity.ClassifyRequest
@@ -253,7 +251,13 @@ class CheckupStatusFragment : BaseFragment() {
             is Result.Success<*> -> {
                 val data = result.data as FindDoctorResponse
                 onResultSuccess(data.message)
-                Toast.makeText(requireContext(), "You have found a doctor.", Toast.LENGTH_SHORT).show()
+
+                Toast.makeText(
+                    requireContext(),
+                    resources.getString(R.string.you_have_found_a_doctor),
+                    Toast.LENGTH_SHORT
+                ).show()
+
                 val intent = Intent(requireContext(), DoctorActivity::class.java)
                 intent.putExtra(DoctorActivity.EXTRA_DOCTOR, data.data.details)
                 startActivity(intent)

@@ -2,6 +2,7 @@ package com.skinconnect.userapps.ui.auth.register
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.Button
 import android.widget.ProgressBar
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import com.skinconnect.userapps.BuildConfig
 import com.skinconnect.userapps.R
 import com.skinconnect.userapps.customview.EditText
 import com.skinconnect.userapps.customview.EmailEditText
@@ -97,6 +99,12 @@ class SecondPageRegisterFragment : AuthFragment() {
                 val data = (it as Result.Success<*>).data as RegisterResponse
                 viewModel.saveUserId(data.data.data.id)
                 viewModel.saveUserToken(data.token)
+
+                if (BuildConfig.DEBUG) {
+                    Log.e("SplashActivity", "USER TOKEN: ${data.token}")
+                    Log.e("SplashActivity", "USER ID: ${data.data.data.id}")
+                }
+
                 val intent = Intent(requireContext(), MainActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish()
