@@ -21,12 +21,11 @@ import com.skinconnect.userapps.data.entity.response.RegisterResponse
 import com.skinconnect.userapps.data.repository.Result
 import com.skinconnect.userapps.databinding.FragmentSignUp2Binding
 import com.skinconnect.userapps.ui.auth.AuthFragment
-import com.skinconnect.userapps.ui.main.MainActivity
 import com.skinconnect.userapps.ui.auth.RegisterViewModel
-import com.skinconnect.userapps.ui.helper.BaseFragment
 import com.skinconnect.userapps.ui.helper.FormValidator
 import com.skinconnect.userapps.ui.helper.ViewHelper
 import com.skinconnect.userapps.ui.helper.ViewModelFactory
+import com.skinconnect.userapps.ui.main.MainActivity
 
 class SecondPageRegisterFragment : AuthFragment() {
     private lateinit var registerDetailRequest: RegisterDetails

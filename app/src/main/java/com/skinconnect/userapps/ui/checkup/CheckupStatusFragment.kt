@@ -53,8 +53,6 @@ class CheckupStatusFragment : BaseFragment() {
     private var isUploadedToFirebase = false
     private var isDiseaseAdded = false
     private val filenameFormat = "dd-MMM-yyyy"
-    private var id = ""
-    private var token = ""
 
     private val timeStamp =
         SimpleDateFormat(filenameFormat, Locale.US).format(System.currentTimeMillis())
@@ -212,17 +210,17 @@ class CheckupStatusFragment : BaseFragment() {
         val viewModel = viewModel as CheckupViewModel
 
         authViewModel.getUserId().observe(requireActivity()) {
-            id = it
+            userId = it
 
             if (token.isNotBlank() && token.isNotEmpty())
-                viewModel.addDisease(id, token, addDiseaseRequest)
+                viewModel.addDisease(userId, token, addDiseaseRequest)
         }
 
         authViewModel.getUserToken().observe(requireActivity()) {
             token = it
 
-            if (id.isNotBlank() && id.isNotEmpty())
-                viewModel.addDisease(id, token, addDiseaseRequest)
+            if (userId.isNotBlank() && userId.isNotEmpty())
+                viewModel.addDisease(userId, token, addDiseaseRequest)
         }
     }
 
@@ -237,7 +235,7 @@ class CheckupStatusFragment : BaseFragment() {
                 onResultSuccess(resources.getString(R.string.finding_doctor))
                 val data = result.data as AddDiseaseResponse
                 val request = FindDoctorRequest(data.data.diseaseId)
-                (viewModel as CheckupViewModel).findDoctor(id, token, request)
+                (viewModel as CheckupViewModel).findDoctor(userId, token, request)
             }
         }
     }

@@ -105,9 +105,8 @@ class ProfileFragment : BaseFragment() {
 
         scheduleData?.forEach { scheduleDatum ->
             scheduleDatum?.items?.forEach { scheduleItem ->
-                val item = ProfileTodoItem(scheduleDatum.id.orEmpty(),
-                    scheduleItem?.id.orEmpty(),
-                    scheduleItem?.title.orEmpty(), userId)
+                val item =
+                    ProfileTodoItem(scheduleDatum.id, scheduleItem.id, scheduleItem.title, userId)
 
                 data.add(item)
             }

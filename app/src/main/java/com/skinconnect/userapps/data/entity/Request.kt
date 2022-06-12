@@ -1,10 +1,7 @@
 package com.skinconnect.userapps.data.entity
 
 import com.google.gson.annotations.SerializedName
-import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
 
 open class LoginRequest(private val email: String, private val password: String)
 

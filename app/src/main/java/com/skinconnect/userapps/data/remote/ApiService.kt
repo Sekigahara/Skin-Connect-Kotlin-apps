@@ -15,8 +15,11 @@ interface ApiService {
     @POST("users/register")
     suspend fun register(@Body request: RegisterRequest): RegisterResponse
 
-    @GET("users/schedule")
-    suspend fun schedule(@Header("Authorization") authorization: String): ScheduleResponse
+    @GET("users/{id}/schedule")
+    suspend fun schedule(
+        @Path("id") id: String,
+        @Header("Authorization") authorization: String
+    ): ScheduleResponse
 
     @Multipart
     @POST("classify")

@@ -6,14 +6,11 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.airbnb.lottie.LottieAnimationView
 import com.skinconnect.userapps.R
-import com.skinconnect.userapps.data.entity.FindDoctorRequest
-import com.skinconnect.userapps.data.entity.response.AddDiseaseResponse
 import com.skinconnect.userapps.data.entity.response.DoctorDetailsResponse
 import com.skinconnect.userapps.data.entity.response.DoctorResponse
 import com.skinconnect.userapps.data.repository.Result
 import com.skinconnect.userapps.databinding.ActivityDoctorBinding
 import com.skinconnect.userapps.ui.auth.DoctorViewModel
-import com.skinconnect.userapps.ui.checkup.CheckupViewModel
 import com.skinconnect.userapps.ui.helper.BaseActivity
 import com.skinconnect.userapps.ui.helper.ViewModelFactory
 
