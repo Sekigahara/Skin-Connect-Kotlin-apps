@@ -34,6 +34,7 @@ class SecondPageRegisterFragment : AuthFragment() {
     private lateinit var passwordEditText: PasswordEditText
     private lateinit var registerButton: Button
     private lateinit var registerProgressBar: ProgressBar
+    private lateinit var fullNameEditText: EditText
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,6 +62,7 @@ class SecondPageRegisterFragment : AuthFragment() {
         passwordEditText = binding.cvPassword
         registerButton = binding.btnCreate
         registerProgressBar = binding.progressBarRegister
+        fullNameEditText = binding.fullNameEditText
         setRegisterButtonEnable()
     }
 
@@ -75,11 +77,15 @@ class SecondPageRegisterFragment : AuthFragment() {
         usernameEditText.addTextChangedListener(textWatcher)
         emailEditText.addTextChangedListener(textWatcher)
         passwordEditText.addTextChangedListener(textWatcher)
+        fullNameEditText.addTextChangedListener(textWatcher)
 
         registerButton.setOnClickListener {
             val username = "${usernameEditText.text}".trim()
             val email = "${emailEditText.text}".trim()
             val password = "${passwordEditText.text}".trim()
+            val fullName = "${fullNameEditText.text}".trim()
+            registerDetailRequest.fullName = fullName
+
             val request =
                 RegisterRequest(username, password, registerDetailRequest, email, password)
 
@@ -115,9 +121,10 @@ class SecondPageRegisterFragment : AuthFragment() {
         val username = "${usernameEditText.text}"
         val email = "${emailEditText.text}"
         val password = "${passwordEditText.text}"
+        val fullName = "${fullNameEditText.text}"
 
         registerButton.isEnabled =
             FormValidator.validateUsername(username) && FormValidator.validateEmail(email) && FormValidator.validatePassword(
-                password)
+                password) && FormValidator.validateUsername(fullName)
     }
 }
