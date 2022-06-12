@@ -4,17 +4,12 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
-import android.view.View
-import android.widget.Button
-import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
-import com.google.android.material.snackbar.Snackbar
-import com.skinconnect.userapps.R
 import com.skinconnect.userapps.data.repository.BaseRepository
 import com.skinconnect.userapps.data.repository.Result
 import java.text.DateFormat
@@ -50,6 +45,8 @@ abstract class BaseFragment : Fragment(), BaseView {
     protected lateinit var viewModel: ViewModel
     protected var viewBinding: ViewBinding? = null
     protected val binding get() = viewBinding!!
+    protected var token = ""
+    protected var userId = ""
 
     override fun onDestroy() {
         super.onDestroy()

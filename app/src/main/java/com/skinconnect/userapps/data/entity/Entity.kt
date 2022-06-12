@@ -27,3 +27,9 @@ data class ProfileTodoItem(
     val scheduleTitle: String,
     val userId: String,
 ) : Parcelable
+
+data class Schedule(
+    val time: String,
+    val title: String,
+    val description: String
+)

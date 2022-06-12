@@ -68,9 +68,6 @@ data class ProfileDataResponse(
 	@field:SerializedName("schedule_data")
 	val scheduleData: List<ScheduleDataResponse?>? = null,
 
-//	@field:SerializedName("details")
-//	val details: ProfileDetailsResponse,
-
 	@field:SerializedName("_id")
 	val id: String,
 
@@ -78,63 +75,10 @@ data class ProfileDataResponse(
 	val username: String
 )
 
-data class ScheduleDataResponse(
-	@field:SerializedName("_id")
-	val id: String? = null,
-
-	@field:SerializedName("items")
-	val items: List<ScheduleDataItemResponse?>? = null,
-//	@field:SerializedName("createdAt")
-//	val createdAt: String? = null,
-//
-//	@field:SerializedName("doctors")
-//	val doctors: String? = null,
-//
-//	@field:SerializedName("__v")
-//	val V: Int? = null,
-
-//	@field:SerializedName("users")
-//	val users: String? = null,
-//
-//	@field:SerializedName("updatedAt")
-//	val updatedAt: String? = null
-)
-
-data class ScheduleDataItemResponse(
-	@field:SerializedName("time")
-	val time: String? = null,
-
-	@field:SerializedName("_id")
-	val id: String? = null,
-
-	@field:SerializedName("title")
-	val title: String? = null,
-
-	@field:SerializedName("done")
-	val done: Boolean? = null,
-
-//	@field:SerializedName("content")
-//	val content: String? = null
-)
-
 data class HandledByResponse(
 	@field:SerializedName("doctor_id")
 	val doctorId: String? = null,
 )
-
-//data class ProfileDetailsResponse(
-//	@field:SerializedName("full_name")
-//	val fullName: String? = null,
-//
-//	@field:SerializedName("gender")
-//	val gender: String? = null,
-//
-//	@field:SerializedName("weight")
-//	val weight: Int? = null,
-//
-//	@field:SerializedName("age")
-//	val age: Int? = null
-//)
 
 class DoctorResponse(
 	@field:SerializedName("doctor")

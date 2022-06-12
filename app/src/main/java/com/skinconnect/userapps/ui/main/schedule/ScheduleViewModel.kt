@@ -5,15 +5,12 @@ import com.skinconnect.userapps.data.repository.Result
 import com.skinconnect.userapps.data.repository.ScheduleRepository
 import kotlinx.coroutines.launch
 
-open class ScheduleViewModel(private val repo : ScheduleRepository): ViewModel() {
-    private val mutableResult = MutableLiveData<Result>()
-    val result : LiveData<Result> = mutableResult
+class ScheduleViewModel(private val repo : ScheduleRepository): ViewModel() {
+    private val _getScheduleResult = MutableLiveData<Result>()
+    val getScheduleResult : LiveData<Result> = _getScheduleResult
 
-    fun saveUserToken(token: String) = viewModelScope.launch { repo.saveUserToken(token) }
-
-    fun getUserToken() : LiveData<String> {
-        return repo.getUserToken().asLiveData()
+    fun getSchedule(id: String, token : String) = viewModelScope.launch {
+        _getScheduleResult.value = Result.Loading
+        repo.getSchedule(id, token, _getScheduleResult)
     }
-
-    fun getSchedule(token : String) = repo.schedule(token)
 }
