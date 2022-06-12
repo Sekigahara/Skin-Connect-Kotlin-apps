@@ -38,4 +38,10 @@ interface ApiService {
 
     @GET("users/profile")
     suspend fun getProfile(@Header("Authorization") authorization: String): ProfileResponse
+
+    @GET("users/{id}/doctor")
+    suspend fun getDoctor(
+        @Path("id") id: String,
+        @Header("Authorization") authorization: String,
+    ): DoctorResponse
 }

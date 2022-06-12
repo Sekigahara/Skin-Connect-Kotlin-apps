@@ -1,16 +1,10 @@
 package com.skinconnect.userapps.ui.main.profile
 
-import android.app.Activity
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.util.Pair
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.skinconnect.userapps.data.entity.ProfileTodoItem
 import com.skinconnect.userapps.databinding.ItemTodoBinding
 

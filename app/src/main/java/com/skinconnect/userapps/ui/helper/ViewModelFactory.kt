@@ -8,10 +8,7 @@ import com.skinconnect.userapps.data.repository.BaseRepository
 import com.skinconnect.userapps.data.repository.CheckupRepository
 import com.skinconnect.userapps.data.repository.ScheduleRepository
 import com.skinconnect.userapps.di.Injection
-import com.skinconnect.userapps.ui.auth.AuthViewModel
-import com.skinconnect.userapps.ui.auth.LoginViewModel
-import com.skinconnect.userapps.ui.auth.ProfileViewModel
-import com.skinconnect.userapps.ui.auth.RegisterViewModel
+import com.skinconnect.userapps.ui.auth.*
 import com.skinconnect.userapps.ui.checkup.CheckupViewModel
 import com.skinconnect.userapps.ui.main.schedule.ScheduleViewModel
 
@@ -32,6 +29,8 @@ class ViewModelFactory private constructor(
             return ScheduleViewModel(repository as ScheduleRepository) as T
         if (modelClass.isAssignableFrom(ProfileViewModel::class.java))
             return ProfileViewModel(repository as AuthRepository) as T
+        if (modelClass.isAssignableFrom(DoctorViewModel::class.java))
+            return DoctorViewModel(repository as AuthRepository) as T
 
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }

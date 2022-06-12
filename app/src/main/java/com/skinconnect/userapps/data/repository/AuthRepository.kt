@@ -42,6 +42,13 @@ class AuthRepository private constructor(
         catchError(exception, liveData)
     }
 
+    suspend fun getDoctor(id: String, token: String, liveData: MutableLiveData<Result>) = try {
+        val response = service.getDoctor(id, "Bearer $token")
+        processResponse(response, liveData)
+    } catch (exception: Exception) {
+        catchError(exception, liveData)
+    }
+
     companion object {
         @Volatile
         private var instance: AuthRepository? = null

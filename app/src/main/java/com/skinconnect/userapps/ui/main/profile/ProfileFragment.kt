@@ -22,6 +22,7 @@ import com.skinconnect.userapps.databinding.FragmentProfileBinding
 import com.skinconnect.userapps.ui.auth.AuthActivity
 import com.skinconnect.userapps.ui.auth.AuthViewModel
 import com.skinconnect.userapps.ui.auth.ProfileViewModel
+import com.skinconnect.userapps.ui.doctor.DoctorActivity
 import com.skinconnect.userapps.ui.helper.BaseFragment
 import com.skinconnect.userapps.ui.helper.ViewModelFactory
 import java.text.SimpleDateFormat
@@ -31,6 +32,7 @@ class ProfileFragment : BaseFragment() {
     private lateinit var logoutButton: FloatingActionButton
     private lateinit var doctorId: String
     private var isFinishedGettingProfile = false
+    private var isWithDoctor = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,6 +79,7 @@ class ProfileFragment : BaseFragment() {
                 val greetingText = "Hello ${data.username}"
                 binding.greetingUserTextView.text = greetingText
                 if (doctorId.isBlank()) return
+                isWithDoctor = true
                 setViewDoctorProfileButtonVisible()
                 if (data.scheduleData == null) return
                 setupRecyclerView(data.scheduleData, data.id)
@@ -141,6 +144,11 @@ class ProfileFragment : BaseFragment() {
                     startActivity(intent)
                     requireActivity().finish()
                 }.show()
+        }
+
+        (binding as FragmentProfileBinding).viewDoctorProfileButton.setOnClickListener {
+            val intent = Intent(requireContext(), DoctorActivity::class.java)
+            startActivity(intent)
         }
     }
 }

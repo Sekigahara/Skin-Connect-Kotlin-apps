@@ -135,3 +135,19 @@ data class HandledByResponse(
 //	@field:SerializedName("age")
 //	val age: Int? = null
 //)
+
+class DoctorResponse(
+	@field:SerializedName("doctor")
+	val doctor: DoctorDataResponse,
+
+	status: String,
+	message: String = "Get doctor success"
+) : BaseResponse(message, status)
+
+data class DoctorDataResponse(
+	@field:SerializedName("details")
+	val details: DoctorDetailsResponse,
+
+	@field:SerializedName("_id")
+	val id: String
+)
